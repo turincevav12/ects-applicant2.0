@@ -1,0 +1,21 @@
+#window-menu{
+    width: 100%;
+    height: 100%;
+    background: lightskyblue;
+    display: none;
+}
+#left-window-menu{
+    width: auto;
+    height: 100%;
+    background: lawngreen;
+}
+.buttons-navigation{
+    width: 20px;
+    height: 160px;
+    background: white;
+    cursor: pointer;
+}
+.buttons-navigation:hover{
+    width: 60px;
+    background: whitesmoke;
+}

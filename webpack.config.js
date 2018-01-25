@@ -5,7 +5,7 @@ const dr = path => resolve(__dirname, path)
 module.exports = {
 
   entry: {
-	  main: dr('src/scripts/user')
+    main: [dr('src/scripts/user'),dr('src/scripts/window-menu')]
   },
 
   output: {

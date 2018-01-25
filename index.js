@@ -7,14 +7,16 @@ const globalShortcut = electron.globalShortcut;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
 
+const users = require('./src/data/login.json')
+
 const appTitle = "ECTS";
 
 let mainWindow = null, printWindow;
 
 app.on('ready', function() {
     mainWindow = new BrowserWindow({
-        width: 500,
-        height: 300,
+        width: 550,
+        height: 400,
         frame: false,
         fullscreen: true,
         show: false
@@ -24,6 +26,11 @@ app.on('ready', function() {
     globalShortcut.register('Control + Q', () => {
         app.quit();
     });
+
+    ipcMain.on('users', function(event) {
+        event.sender.send('data', users);
+    });
+
 
     mainWindow.loadURL(__dirname + '/index.html');
     mainWindow.show();    

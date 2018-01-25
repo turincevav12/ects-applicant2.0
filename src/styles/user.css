@@ -4,13 +4,14 @@ body{
     background: white;
     font-size: 18px;
 }
-.user{
+#user{
     width: 500px;
     height: 350px;
     background: lightskyblue;
     margin: 10% auto;
     border-radius: 40px;
     border: 15px solid gainsboro;
+    font-family: monospace;
 }
 .top-line-autorization{
     width: 90%;
@@ -18,19 +19,16 @@ body{
     height: 40px;
     font-size: 40px;
     color: white;
-    font-family: cursive;
 }
 .body-autorization{
     width: 90%;
     height: calc(100% - 160px);
     margin: 10px auto;
     font-size: 28px;
-    font-family: cursive;
 }
 .login{
     font-size: 21px;
     width: 100%;
-    font-family: monospace;
 }
 .enter-autorization{
     width: 50%;
@@ -41,7 +39,6 @@ body{
     border: 1px solid cadetblue;
     cursor: pointer;
     font-size: 30px;
-    font-family: cursive;
     line-height: 50px;
     text-align: center;
 }
