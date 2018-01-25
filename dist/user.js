@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -202,7 +202,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(6);
+var	fixUrls = __webpack_require__(2);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -519,97 +519,6 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(3);
-module.exports = __webpack_require__(9);
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_user_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_fs__);
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].on('data', (event, arg) => {});
-__WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].send('users');
-const login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json')).login;
-
-window.onload = () => {
-    var enter = document.getElementsByClassName('enter-autorization')[0];
-    var name = document.getElementsByClassName('login')[0];
-    var password = document.getElementsByClassName('login')[1];
-
-    enter.onclick = () => {
-        for (var i = 0; i != login.length; i++) {
-            if (name.value == login[i].login && password.value == login[i].password) {
-                alert('Вы вошли');
-                document.getElementById('user').style.display = "none";
-                document.getElementById('window-menu').style.display = "block";
-            } else {
-                alert('Логин или пароль не верны');
-            }
-        }
-    };
-};
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(5);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!./user.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!./user.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(false);
-// imports
-
-
-// module
-exports.push([module.i, "body{\r\n    margin: 0;\r\n    overflow: hidden;\r\n    background: white;\r\n    font-size: 18px;\r\n}\r\n#user{\r\n    width: 500px;\r\n    height: 350px;\r\n    background: lightskyblue;\r\n    margin: 10% auto;\r\n    border-radius: 40px;\r\n    border: 15px solid gainsboro;\r\n    font-family: monospace;\r\n}\r\n.top-line-autorization{\r\n    width: 90%;\r\n    margin: 10px auto;\r\n    height: 40px;\r\n    font-size: 40px;\r\n    color: white;\r\n}\r\n.body-autorization{\r\n    width: 90%;\r\n    height: calc(100% - 160px);\r\n    margin: 10px auto;\r\n    font-size: 28px;\r\n}\r\n.login{\r\n    font-size: 21px;\r\n    width: 100%;\r\n}\r\n.enter-autorization{\r\n    width: 50%;\r\n    height: 15%;\r\n    background: lightblue;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    border: 1px solid cadetblue;\r\n    cursor: pointer;\r\n    font-size: 30px;\r\n    line-height: 50px;\r\n    text-align: center;\r\n}", ""]);
-
-// exports
-
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports) {
 
 
@@ -704,35 +613,51 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("electron");
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
-/* 9 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_user_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_fs__);
 
+
+
+
+__WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].on('data', (event, arg) => {});
+__WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].send('users');
+const login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json')).login;
+
+window.onload = () => {
+    var enter = document.getElementsByClassName('enter-autorization')[0];
+    var name = document.getElementsByClassName('login')[0];
+    var password = document.getElementsByClassName('login')[1];
+
+    enter.onclick = () => {
+        for (var i = 0; i != login.length; i++) {
+            if (name.value == login[i].login && password.value == login[i].password) {
+                alert('Вы вошли');
+                document.getElementById('user').style.display = "none";
+                document.getElementById('window-menu').style.display = "block";
+            } else {
+                alert('Логин или пароль не верны');
+            }
+        }
+    };
+};
 
 /***/ }),
-/* 10 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(11);
+var content = __webpack_require__(5);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -746,8 +671,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!./window-menu.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!./window-menu.css");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./user.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./user.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -757,7 +682,7 @@ if(false) {
 }
 
 /***/ }),
-/* 11 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -765,10 +690,22 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "#window-menu{\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n}\r\n#left-window-menu{\r\n    width: auto;\r\n    height: 100%;\r\n    background: lawngreen;\r\n}\r\n.buttons-navigation{\r\n    width: 20px;\r\n    height: 160px;\r\n    background: white;\r\n    cursor: pointer;\r\n}\r\n.buttons-navigation:hover{\r\n    width: 60px;\r\n    background: whitesmoke;\r\n}\r\n", ""]);
+exports.push([module.i, "body{\r\n    margin: 0;\r\n    overflow: hidden;\r\n    background: white;\r\n    font-size: 18px;\r\n}\r\n#user{\r\n    width: 500px;\r\n    height: 350px;\r\n    background: lightskyblue;\r\n    margin: 10% auto;\r\n    border-radius: 40px;\r\n    border: 15px solid gainsboro;\r\n    font-family: monospace;\r\n}\r\n.top-line-autorization{\r\n    width: 90%;\r\n    margin: 10px auto;\r\n    height: 40px;\r\n    font-size: 40px;\r\n    color: white;\r\n}\r\n.body-autorization{\r\n    width: 90%;\r\n    height: calc(100% - 160px);\r\n    margin: 10px auto;\r\n    font-size: 28px;\r\n}\r\n.login{\r\n    font-size: 21px;\r\n    width: 100%;\r\n}\r\n.enter-autorization{\r\n    width: 50%;\r\n    height: 15%;\r\n    background: lightblue;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    border: 1px solid cadetblue;\r\n    cursor: pointer;\r\n    font-size: 30px;\r\n    line-height: 50px;\r\n    text-align: center;\r\n}", ""]);
 
 // exports
 
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
 
 /***/ })
 /******/ ]);

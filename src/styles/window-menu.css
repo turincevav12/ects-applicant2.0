@@ -4,18 +4,34 @@
     background: lightskyblue;
     display: none;
 }
-#left-window-menu{
-    width: auto;
+.left-window-menu{
+    width: 65px;
     height: 100%;
-    background: lawngreen;
+    margin-top: 90px;
+    display: inline-block;
+}
+.central-window-menu{
+    width: calc(100% - 65px);
+    height: 100%;
+    margin-top: 90px;
+    display: inline-block;
+    float: right;
 }
 .buttons-navigation{
     width: 20px;
     height: 160px;
     background: white;
     cursor: pointer;
+    writing-mode: vertical-lr;
+    text-align: -webkit-center;
+    font-size: 21px;
+    border: 1px solid;
+    border-radius: 0 5px 5px 0;
+
 }
 .buttons-navigation:hover{
     width: 60px;
+    line-height: 60px;
     background: whitesmoke;
+    border: 2px solid;
 }

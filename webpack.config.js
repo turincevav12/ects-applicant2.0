@@ -5,12 +5,13 @@ const dr = path => resolve(__dirname, path)
 module.exports = {
 
   entry: {
-    main: [dr('src/scripts/user'),dr('src/scripts/window-menu')]
+    user: dr('src/scripts/user'),
+    window: dr('src/scripts/window-menu')
   },
 
   output: {
     path: dr('dist'),
-    filename: 'script.js'
+    filename: '[name].js'
   },
   
   target: 'electron-renderer',
