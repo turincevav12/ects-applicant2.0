@@ -1,25 +1,78 @@
+::-webkit-scrollbar{
+    width: 0px;
+}
+
+
 #window-menu{
     width: 100%;
     height: 100%;
     background: lightskyblue;
     display: none;
+    overflow: hidden;
 }
-.left-window-menu{
-    width: 65px;
+#left-window-menu{
+    width: 10px;
     height: 100%;
     margin-top: 90px;
     display: inline-block;
 }
 .central-window-menu{
-    width: calc(100% - 65px);
+    width: 98%;
     height: 100%;
-    margin-top: 90px;
+    margin: 10px auto;
     display: inline-block;
     float: right;
+    margin-top: 10px;
+    overflow: auto;
+}
+#left-window-menu:hover .buttons-navigation{
+    display: inline-block;
+}
+#spec{
+    width: 100%;
+    font-family: monospace;
+    font-size: 21px;
+}
+.menu{
+    display: none;
+    background: whitesmoke;
+    width: 98%;
+    border: 1px solid black;
+    overflow: scroll;
+    height: 90%;
+    border-radius: 5px;
+    padding: 10px;
+}
+.input-new-applicant{
+    display: block;
+    margin-top: 15px;
+}
+.input-new-applicant input{
+    width: 100%;
+    font-size: 21px;
+    font-family: monospace;
+}
+.input-new-applicant span{
+    font-size: 21px;
+    font-family: monospace;
+}
+
+#hello{
+    position: absolute;
+    background: whitesmoke;
+    width: 50%;
+    height: 120px;
+    text-align: center;
+    display: block;
+    margin: 20% 25%;
+    font-size: 26px;
+    border: 1px solid;
+    line-height: 50px;
 }
 .buttons-navigation{
     width: 20px;
     height: 160px;
+    display: none;
     background: white;
     cursor: pointer;
     writing-mode: vertical-lr;
@@ -27,11 +80,33 @@
     font-size: 21px;
     border: 1px solid;
     border-radius: 0 5px 5px 0;
-
 }
 .buttons-navigation:hover{
     width: 60px;
     line-height: 60px;
     background: whitesmoke;
     border: 2px solid;
+}
+
+#creatApplicant{
+    display: none;
+    background: white;
+    border: 1px solid;
+    overflow: auto;
+}
+.blockSpecka{
+    width: 100%;
+    margin: 15px auto;
+    background: mintcream;
+    border: 1px solid black;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.blockApplicantsShow{
+    width: 95%;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid;
+    margin: 0 auto;
+    display: table-caption;
 }

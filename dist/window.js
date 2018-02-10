@@ -625,16 +625,76 @@ module.exports = function (css) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_forma_new_applicant_css__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_forma_new_applicant_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_forma_new_applicant_css__);
 
 
+var newApplicantB = document.getElementsByClassName('buttons-navigation')[0];
+var bazaApplicantsB = document.getElementsByClassName('buttons-navigation')[1];
+var settingB = document.getElementsByClassName('buttons-navigation')[2];
 
-var newApplicant = document.getElementsByClassName('buttons-navigation')[0];
-var bazaApplicants = document.getElementsByClassName('buttons-navigation')[1];
-var setting = document.getElementsByClassName('buttons-navigation')[2];
+var creatApplicant = document.getElementById('new-applicant');
+var bazaApplicant = document.getElementById('bazaApplicant');
+var setting = document.getElementById('setting');
+var hello = document.getElementById('hello');
 
-newApplicant.onclick = () => {};
+setTimeout(function () {
+    hello.style.display = "none";
+}, 10000);
+
+newApplicantB.onclick = () => {
+    creatApplicant.style.display = 'inline-block';
+    bazaApplicant.style.display = 'none';
+    setting.style.display = 'none';
+
+    var select = document.getElementById('spec');
+    specArray.forEach(function (e, i) {
+        var opt = document.createElement('option');
+        opt.innerText = e;
+        select.appendChild(opt);
+    });
+};
+
+bazaApplicantsB.onclick = () => {
+    bazaApplicant.innerHTML = '';
+
+    creatApplicant.style.display = 'none';
+    bazaApplicant.style.display = 'inline-block';
+    setting.style.display = 'none';
+
+    console.log(bazaApplicants);
+
+    specArray.forEach(function (e, i) {
+        var block = document.createElement('div');
+        var applicants = document.createElement('div');
+
+        block.className = 'blockSpecka';
+        block.innerText = e;
+        block.id = i;
+        block.onclick = function () {
+            window.indexNumber = i;
+            enterBlockSpec();
+        };
+
+        applicants.className = 'blockApplicantsShow';
+        applicants.id = "ap" + i;
+
+        block.appendChild(applicants);
+        bazaApplicant.appendChild(block);
+    });
+};
+
+settingB.onclick = () => {
+    creatApplicant.style.display = 'none';
+    bazaApplicant.style.display = 'none';
+    setting.style.display = 'inline-block';
+};
+
+var indexNoneBlock = 0;
+window.enterBlockSpec = e => {
+    document.getElementById('ap' + indexNoneBlock).style.display = "none";
+    document.getElementById('ap' + indexNumber).style.display = "block";
+
+    indexNoneBlock = indexNumber;
+};
 
 /***/ }),
 /* 9 */
@@ -676,52 +736,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "#window-menu{\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n}\r\n.left-window-menu{\r\n    width: 65px;\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n}\r\n.central-window-menu{\r\n    width: calc(100% - 65px);\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n    float: right;\r\n}\r\n.buttons-navigation{\r\n    width: 20px;\r\n    height: 160px;\r\n    background: white;\r\n    cursor: pointer;\r\n    writing-mode: vertical-lr;\r\n    text-align: -webkit-center;\r\n    font-size: 21px;\r\n    border: 1px solid;\r\n    border-radius: 0 5px 5px 0;\r\n\r\n}\r\n.buttons-navigation:hover{\r\n    width: 60px;\r\n    line-height: 60px;\r\n    background: whitesmoke;\r\n    border: 2px solid;\r\n}\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(12);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {"hmr":true}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!./forma-new-applicant.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!./forma-new-applicant.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".text-big{\r\n\tfont-weight: bold;\r\n}\r\n.placeholder-text-data{\r\n\twidth: 5%;\r\n\tborder-bottom: 1px black;\r\n    flex-grow: 12;\r\n    margin-left: 20px;\r\n    margin-right: 10px;\r\n}\r\n.placeholder-document-identity-serial-number{\r\n\twidth: 5%;\r\n    flex-grow: 12;\r\n    margin-left: 20px;\r\n    margin-right: 10px;\r\n}\r\n.placeholder-index-cellphone-homephone{\r\n\twidth: 5%;\r\n    flex-grow: 12;\r\n    margin-left: 20px;\r\n    margin-right: 10px;\r\n}\r\n.block-data-name-persona{\r\n\tmargin: 2px 0 2px 0;\r\n}\r\n\r\n#placeholder-the-actual-address{\r\n\twidth: 79%;\r\n}\r\n\r\n\r\n\r\n#data-city-citizenship-data{\r\n\tdisplay: flex;\r\n}\r\n#bottom{\r\n\tdisplay: flex;\r\n    justify-content: space-between;\r\n\theight: 150px;\r\n}\r\n#image{\r\n\twidth: 150px;\r\n    height: 100%;\r\n\tbox-shadow: 0 0 5px black;\r\n}\r\n#text-bottom{\r\n\tflex-grow: 1;\r\n    margin-left: 10px;\r\n}\r\n#regestration-number{\r\n}\r\n#text-bottom-right{\r\n\ttext-align: right;\r\n}\r\n#line-top-text{\r\n\twidth: 100%;\r\n\theight: 20px;\r\n\ttext-align: center;\r\n\tfont-size: 14px;\r\n}\r\n#line-bottom-text{\r\n\twidth: 100%;\r\n\tdisplay: flex;\r\n    justify-content: space-between;\r\n}\r\n#data-name-persona{\r\n\tmargin-top: 5px;\r\n}\r\n#text-data-placeholder{\r\n\tflex-grow: 4;\r\n}\r\n#document-identity-serial-number{\r\n\tdisplay: flex;\r\n}\r\n#placeholder-when-and-by-whom-issued{\t\r\n\twidth: 87.7%;\r\n}\r\n#index-cellphone-homephone{\r\n\tdisplay: flex;\r\n}\r\n#input_text-ot-FIO {\r\n    width: 93.5%;\r\n    margin-left: 5px;\r\n}\r\n#placeholder-registration-address-as-in-passport{\r\n\twidth: 68.7%;\r\n\t\r\n}\r\n#statement{\r\n\tdisplay: grid;\r\n}\r\n.statement_center{\r\n\tfont-size: 16px;\r\n    margin: 10px auto;\r\n    font-weight: bold;\r\n}\r\n#specional{\r\n\twidth: 100%;\r\n\r\n}\r\n.statement_bottom{\r\n\tfont-weight: bold;\r\n}\r\n.list_document {\r\n    width: 49%;\r\n    height: 250px;\r\n    text-align: left;\r\n    display: inline-table;\r\n}\r\n#signature{\r\n\twidth: 80%;\r\n    background: gray;\r\n    height: 15px;\r\n    display: inline-flex;\r\n    border-bottom: 2px solid;\r\n}\r\n#column{\r\n\tdisplay: flex;\r\n}\r\n#column_text_1{\r\n\twidth: 85%;\r\n}\r\n#column_text_2{\r\n\twidth: 10%;\r\n}\r\n#statement {\r\n    text-align: center;\r\n}\r\n.statement_center {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n}\r\n\r\n#name_school{\r\n\twidth: 73.8%;\r\n}\r\n\r\n#fio_faser{\r\n\twidth: 93%;\r\n}\r\n#mesto_job_f{\r\n\twidth: 33.9%;\r\n}\r\n#doljnost_f{\r\n\twidth: 50%;\r\n}\r\n#fio_mazer{\r\n\twidth: 93.3%;\r\n}\r\n#mesto_job_m{\r\n\twidth: 33.9%;\r\n}\r\n#doljnost_m{\r\n\twidth: 50%;\r\n}\r\n#dr_sv{\r\n\twidth:89.2%;\r\n}", ""]);
+exports.push([module.i, "::-webkit-scrollbar{\r\n    width: 0px;\r\n}\r\n\r\n\r\n#window-menu{\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n    overflow: hidden;\r\n}\r\n#left-window-menu{\r\n    width: 10px;\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n}\r\n.central-window-menu{\r\n    width: 98%;\r\n    height: 100%;\r\n    margin: 10px auto;\r\n    display: inline-block;\r\n    float: right;\r\n    margin-top: 10px;\r\n    overflow: auto;\r\n}\r\n#left-window-menu:hover .buttons-navigation{\r\n    display: inline-block;\r\n}\r\n#spec{\r\n    width: 100%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n.menu{\r\n    display: none;\r\n    background: whitesmoke;\r\n    width: 98%;\r\n    border: 1px solid black;\r\n    overflow: scroll;\r\n    height: 90%;\r\n    border-radius: 5px;\r\n    padding: 10px;\r\n}\r\n.input-new-applicant{\r\n    display: block;\r\n    margin-top: 15px;\r\n}\r\n.input-new-applicant input{\r\n    width: 100%;\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n.input-new-applicant span{\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n#hello{\r\n    position: absolute;\r\n    background: whitesmoke;\r\n    width: 50%;\r\n    height: 120px;\r\n    text-align: center;\r\n    display: block;\r\n    margin: 20% 25%;\r\n    font-size: 26px;\r\n    border: 1px solid;\r\n    line-height: 50px;\r\n}\r\n.buttons-navigation{\r\n    width: 20px;\r\n    height: 160px;\r\n    display: none;\r\n    background: white;\r\n    cursor: pointer;\r\n    writing-mode: vertical-lr;\r\n    text-align: -webkit-center;\r\n    font-size: 21px;\r\n    border: 1px solid;\r\n    border-radius: 0 5px 5px 0;\r\n}\r\n.buttons-navigation:hover{\r\n    width: 60px;\r\n    line-height: 60px;\r\n    background: whitesmoke;\r\n    border: 2px solid;\r\n}\r\n\r\n#creatApplicant{\r\n    display: none;\r\n    background: white;\r\n    border: 1px solid;\r\n    overflow: auto;\r\n}\r\n.blockSpecka{\r\n    width: 100%;\r\n    margin: 15px auto;\r\n    background: mintcream;\r\n    border: 1px solid black;\r\n    font-size: 30px;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n}\r\n.blockApplicantsShow{\r\n    width: 95%;\r\n    border-radius: 0 0 5px 5px;\r\n    border: 1px solid;\r\n    margin: 0 auto;\r\n    display: table-caption;\r\n}", ""]);
 
 // exports
 

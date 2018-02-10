@@ -3,8 +3,11 @@ import { ipcRenderer } from 'electron';
 import { readFileSync, writeFile } from 'fs';
 
 ipcRenderer.on('data', (event, arg) => {});
-ipcRenderer.send('users');
+ipcRenderer.send(['users', 'spec', 'applicant']);
+
 const login = JSON.parse(readFileSync('./src/data/login.json')).login;
+window.specArray = JSON.parse(readFileSync('./src/data/spec.json')).spec;
+window.bazaApplicants = JSON.parse(readFileSync('./src/data/applicant.json')).applicants;
 
 window.onload = () => {
     var enter = document.getElementsByClassName('enter-autorization')[0]
