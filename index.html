@@ -1,120 +1,119 @@
 <html>
-    <head>
-        <meta charset="UTF-8"/>
-    </head>
-    <body>
-        <div id="user">
-            <div class="top-line-autorization">
-                <span>Вход</span>
-            </div>
-            <div class="body-autorization">
-                <span>Login</span><br>
-                <input class="login" autofocus/><br>
-                <span>Pass</span><br>
-                <input class="login" type="password"/><br>
-            </div>
-            <div class="enter-autorization">ENTER</div>
-        </div>
 
-        <div id="window-menu">
-            <div id="left-window-menu">
-                <div class="buttons-navigation">Создать</div><br>
-                <div class="buttons-navigation">База</div><br>
-                <div class="buttons-navigation">Настройки</div><br>
+<head>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <div id="user">
+        <div class="top-line-autorization">
+            <span>Вход</span>
+        </div>
+        <div class="body-autorization">
+            <span>Login</span><br>
+            <input class="login" autofocus/><br>
+            <span>Pass</span><br>
+            <input class="login" type="password" /><br>
+        </div>
+        <div class="enter-autorization">ENTER</div>
+    </div>
+
+    <div id="window-menu">
+        <div id="left-window-menu">
+            <div class="buttons-navigation">Создать</div><br>
+            <div class="buttons-navigation">База</div><br>
+            <div class="buttons-navigation">Настройки</div><br>
+        </div>
+        <div class="central-window-menu" class="menu">
+
+            <div id="hello">
+                Добро пожаловать в программу! <br> Что бы начать, наведите курсор мыши в левый край.
             </div>
-            <div class="central-window-menu" class="menu">
-                
-                <div id="hello">
-                    Добро пожаловать в программу! <br>
-                    Что бы начать, наведите курсор мыши в левый край.
+
+            <div id="new-applicant" class="menu">
+                <div class="input-new-applicant">
+                    <span>от ФИО</span>
+                    <input id="fio" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Дата рождения</span>
+                    <input id="data-happi" type="date" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Место рождения</span>
+                    <input id="place-of-birth" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Гражданство</span>
+                    <input id="citizenship" type="text" />
                 </div>
 
-                <div id="new-applicant" class="menu">
-                    <div class="input-new-applicant">
-                        <span>от ФИО</span>
-                        <input id="fio" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Дата рождения</span>
-                        <input id="data-happi" type="date"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Место рождения</span>
-                        <input id="place-of-birth" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Гражданство</span>
-                        <input id="citizenship" type="text"/>
-                    </div>
-                    
-                    <div class="input-new-applicant">
-                        <span>Документы, удостоверяющий личность</span>
-                        <input id="document" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Серия</span>
-                        <input id="seria" maxlength="4" type="text"  placeholder="----"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Номер</span>
-                        <input id="number" maxlength="6" type="text" placeholder="------"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Когда и кем выдан паспорт</span>
-                        <input id="issued" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Адрес регистрации(по паспорту)</span>
-                        <input id="regestration-of-passport" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Адрес жительства</span>
-                        <input id="adres-now" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Индекс</span>
-                        <input id="index" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Сотовый тел.</span>
-                        <input id="call-sot" type="text"/>
-                    </div>
-                    <div class="input-new-applicant">
-                        <span>Домашний тел.</span>
-                        <input id="call-houm" type="text"/>
-                    </div>                    
-                    <div class="input-new-applicant">
-                            <span>Выберите специальность</span>
-                            <select id="spec">
+                <div class="input-new-applicant">
+                    <span>Документы, удостоверяющий личность</span>
+                    <input id="document" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Серия</span>
+                    <input id="seria" maxlength="4" type="text" placeholder="----" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Номер</span>
+                    <input id="number" maxlength="6" type="text" placeholder="------" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Когда и кем выдан паспорт</span>
+                    <input id="issued" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Адрес регистрации(по паспорту)</span>
+                    <input id="regestration-of-passport" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Адрес жительства</span>
+                    <input id="adres-now" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Индекс</span>
+                    <input id="index" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Сотовый тел.</span>
+                    <input id="call-sot" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Домашний тел.</span>
+                    <input id="call-houm" type="text" />
+                </div>
+                <div class="input-new-applicant">
+                    <span>Выберите специальность</span>
+                    <select id="spec">
                                 
-                            </select>
-                        </div>
+                    </select>
                 </div>
+            </div>
 
-                <div id="bazaApplicant" class="menu">
-                    <div id="sorted">
-                        <div id="poiskName">
-                            <span>ФИО</span>
-                            <input id="poiskNameIn"></input>
-                        </div>
-                        <div id="poiskSpec">
-                                <span>специальность</span>
-                                <select id="poiskSpecOPT"></select>
-                        </div>
-                    </div>    
-                    <div id="applicants"></div>                
-                </div>
-                <div id="setting"  class="menu">
-                    <div id="addSpec">
-                        <span>Введите полное наименование специальности</span>
-                        <input id="nameNewSpec"></input>
+            <div id="bazaApplicant" class="menu">
+                <div id="sorted">
+                    <div id="poiskName">
+                        <span>ФИО</span>
+                        <input id="poiskNameIn"></input>
+                        <div id="namePoisk">Найти</div>
                     </div>
+                </div>
+                <div id="applicants"></div>
+            </div>
+            <div id="setting" class="menu">
+                <div id="addSpec">
+                    <span>Введите полное наименование специальности</span>
+                    <input id="nameNewSpec"></input>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <script src="dist/user.js"></script>
-        <script src="dist/window.js"></script>
-    </body>
+    <script src="dist/user.js"></script>
+    <script src="dist/window.js"></script>
+</body>
+
 </html>
