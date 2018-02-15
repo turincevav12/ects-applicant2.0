@@ -635,6 +635,14 @@ var creatApplicant = document.getElementById('new-applicant');
 var bazaApplicant = document.getElementById('bazaApplicant');
 var setting = document.getElementById('setting');
 var hello = document.getElementById('hello');
+var applicant = document.getElementById('applicants');
+var poiskSpecOPT = document.getElementById('poiskSpecOPT');
+
+specArray.forEach(function (e, i) {
+    var opt = document.createElement('option');
+    opt.innerText = e;
+    poiskSpecOPT.appendChild(opt);
+});
 
 setTimeout(function () {
     hello.style.display = "none";
@@ -654,7 +662,7 @@ newApplicantB.onclick = () => {
 };
 
 bazaApplicantsB.onclick = () => {
-    bazaApplicant.innerHTML = '';
+    applicant.innerHTML = '';
 
     creatApplicant.style.display = 'none';
     bazaApplicant.style.display = 'inline-block';
@@ -678,7 +686,7 @@ bazaApplicantsB.onclick = () => {
         applicants.id = "ap" + i;
 
         block.appendChild(applicants);
-        bazaApplicant.appendChild(block);
+        applicant.appendChild(block);
     });
 };
 
@@ -692,6 +700,17 @@ var indexNoneBlock = 0;
 window.enterBlockSpec = e => {
     document.getElementById('ap' + indexNoneBlock).style.display = "none";
     document.getElementById('ap' + indexNumber).style.display = "block";
+    document.getElementById('ap' + indexNumber).innerHTML = "";
+
+    bazaApplicants.forEach(function (e, i) {
+        if (bazaApplicants[i].spec == specArray[indexNumber]) {
+            var block = document.createElement('div');
+            block.className = "fioBlockApllicant";
+            block.innerText = bazaApplicants[i].fio;
+
+            document.getElementById('ap' + indexNumber).appendChild(block);
+        }
+    });
 
     indexNoneBlock = indexNumber;
 };
@@ -736,7 +755,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "::-webkit-scrollbar{\r\n    width: 0px;\r\n}\r\n\r\n\r\n#window-menu{\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n    overflow: hidden;\r\n}\r\n#left-window-menu{\r\n    width: 10px;\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n}\r\n.central-window-menu{\r\n    width: 98%;\r\n    height: 100%;\r\n    margin: 10px auto;\r\n    display: inline-block;\r\n    float: right;\r\n    margin-top: 10px;\r\n    overflow: auto;\r\n}\r\n#left-window-menu:hover .buttons-navigation{\r\n    display: inline-block;\r\n}\r\n#spec{\r\n    width: 100%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n.menu{\r\n    display: none;\r\n    background: whitesmoke;\r\n    width: 98%;\r\n    border: 1px solid black;\r\n    overflow: scroll;\r\n    height: 90%;\r\n    border-radius: 5px;\r\n    padding: 10px;\r\n}\r\n.input-new-applicant{\r\n    display: block;\r\n    margin-top: 15px;\r\n}\r\n.input-new-applicant input{\r\n    width: 100%;\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n.input-new-applicant span{\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n#hello{\r\n    position: absolute;\r\n    background: whitesmoke;\r\n    width: 50%;\r\n    height: 120px;\r\n    text-align: center;\r\n    display: block;\r\n    margin: 20% 25%;\r\n    font-size: 26px;\r\n    border: 1px solid;\r\n    line-height: 50px;\r\n}\r\n.buttons-navigation{\r\n    width: 20px;\r\n    height: 160px;\r\n    display: none;\r\n    background: white;\r\n    cursor: pointer;\r\n    writing-mode: vertical-lr;\r\n    text-align: -webkit-center;\r\n    font-size: 21px;\r\n    border: 1px solid;\r\n    border-radius: 0 5px 5px 0;\r\n}\r\n.buttons-navigation:hover{\r\n    width: 60px;\r\n    line-height: 60px;\r\n    background: whitesmoke;\r\n    border: 2px solid;\r\n}\r\n\r\n#creatApplicant{\r\n    display: none;\r\n    background: white;\r\n    border: 1px solid;\r\n    overflow: auto;\r\n}\r\n.blockSpecka{\r\n    width: 100%;\r\n    margin: 15px auto;\r\n    background: mintcream;\r\n    border: 1px solid black;\r\n    font-size: 30px;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n}\r\n.blockApplicantsShow{\r\n    width: 95%;\r\n    border-radius: 0 0 5px 5px;\r\n    border: 1px solid;\r\n    margin: 0 auto;\r\n    display: table-caption;\r\n}", ""]);
+exports.push([module.i, "::-webkit-scrollbar{\r\n    width: 0px;\r\n}\r\n\r\n\r\n#window-menu{\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n    overflow: hidden;\r\n}\r\n#left-window-menu{\r\n    width: 10px;\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n}\r\n.central-window-menu{\r\n    width: 98%;\r\n    height: 100%;\r\n    margin: 10px auto;\r\n    display: inline-block;\r\n    float: right;\r\n    margin-top: 10px;\r\n    overflow: auto;\r\n}\r\n#left-window-menu:hover .buttons-navigation{\r\n    display: inline-block;\r\n}\r\n#spec{\r\n    width: 100%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n.menu{\r\n    display: none;\r\n    background: whitesmoke;\r\n    width: 98%;\r\n    border: 1px solid black;\r\n    overflow: scroll;\r\n    height: 90%;\r\n    border-radius: 5px;\r\n    padding: 10px;\r\n}\r\n.input-new-applicant{\r\n    display: block;\r\n    margin-top: 15px;\r\n}\r\n.input-new-applicant input{\r\n    width: 100%;\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n.input-new-applicant span{\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n#hello{\r\n    position: absolute;\r\n    background: whitesmoke;\r\n    width: 50%;\r\n    height: 120px;\r\n    text-align: center;\r\n    display: block;\r\n    margin: 20% 25%;\r\n    font-size: 26px;\r\n    border: 1px solid;\r\n    line-height: 50px;\r\n}\r\n.buttons-navigation{\r\n    width: 20px;\r\n    height: 160px;\r\n    display: none;\r\n    background: white;\r\n    cursor: pointer;\r\n    writing-mode: vertical-lr;\r\n    text-align: -webkit-center;\r\n    font-size: 21px;\r\n    border: 1px solid;\r\n    border-radius: 0 5px 5px 0;\r\n}\r\n.buttons-navigation:hover{\r\n    width: 60px;\r\n    line-height: 60px;\r\n    background: whitesmoke;\r\n    border: 2px solid;\r\n}\r\n\r\n#creatApplicant{\r\n    display: none;\r\n    background: white;\r\n    border: 1px solid;\r\n    overflow: auto;\r\n}\r\n.blockSpecka{\r\n    width: 100%;\r\n    margin: 15px auto;\r\n    background: mintcream;\r\n    border: 1px solid black;\r\n    font-size: 30px;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n}\r\n.blockApplicantsShow{\r\n    width: 95%;\r\n    border-radius: 0 0 5px 5px;\r\n    border: 1px solid;\r\n    margin: 0 auto;\r\n    display: table-caption;\r\n}\r\n#sorted{\r\n    width: 100%;\r\n    height: 100px;\r\n    background: lightgray;\r\n    font-size: 21px;\r\n}", ""]);
 
 // exports
 
