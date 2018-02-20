@@ -636,10 +636,12 @@ var bazaApplicant = document.getElementById('bazaApplicant');
 var setting = document.getElementById('setting');
 var hello = document.getElementById('hello');
 var applicant = document.getElementById('applicants');
+var show = document.getElementById('modal-password');
+var accept = document.getElementById('enter-password-modal');
 
 setTimeout(function () {
     hello.style.display = "none";
-}, 10000);
+}, 100);
 
 newApplicantB.onclick = () => {
     creatApplicant.style.display = 'inline-block';
@@ -655,18 +657,81 @@ newApplicantB.onclick = () => {
 };
 
 bazaApplicantsB.onclick = () => {
-    applicant.innerHTML = '';
+    show.style.display = 'block';
+    accept.onclick = () => {
+        var passwordModal = document.getElementById('password-modal').value;
+        if (passwordModal == '1') {
+            show.style.display = 'none';
 
-    document.getElementById('namePoisk').onclick = () => {
-        namePoisk();
+            applicant.innerHTML = '';
+
+            document.getElementById('namePoisk').onclick = () => {
+                namePoisk();
+            };
+
+            creatApplicant.style.display = 'none';
+            bazaApplicant.style.display = 'inline-block';
+            setting.style.display = 'none';
+
+            creatSpec();
+        } else {
+            alert('У вас нет прав на данный раздел');
+        }
     };
+};
+
+settingB.onclick = () => {
+    show.style.display = 'block';
 
     creatApplicant.style.display = 'none';
-    bazaApplicant.style.display = 'inline-block';
-    setting.style.display = 'none';
+    bazaApplicant.style.display = 'none';
+    setting.style.display = 'inline-block';
+};
 
-    console.log(bazaApplicants);
+window.enterBlockSpec = () => {
+    applicant.innerHTML = "";
+    console.log(bazaApplicants[indexNumber].length);
+    if (bazaApplicants[indexNumber].length == 0) {
+        let block = document.createElement('div');
+        let appectNoApplicant = document.createElement('div');
+        block.id = 'noApplicant';
+        appectNoApplicant.id = 'appectNoApplicant';
 
+        block.innerText = "Записей нет";
+        appectNoApplicant.innerText = "Вернуться";
+
+        block.appendChild(appectNoApplicant);
+        applicant.appendChild(block);
+    } else {}
+};
+
+var namePoisk = function () {
+    let key = 0;
+    let indexApplicant = [];
+    let name = document.getElementById('poiskNameIn').value.split(' ');
+    bazaApplicants.forEach(function (e) {
+        let applicant = e.name.split(' ');
+        let summ = 0;
+        for (var i = 0; i != name.length; i++) {
+            for (var j = 0; j != applicant.length; j++) {
+                if (name[i].toLowerCase() == applicant[j].toLowerCase()) {
+                    summ++;
+                }
+            }
+        }
+        if (summ == name.length) {
+            indexApplicant.push(key);
+        }
+
+        key++;
+    });
+
+    for (var i = 0; i != indexApplicant.length; i++) {
+        let lineApplcant = document.createElement('div');
+    }
+};
+
+var creatSpec = function () {
     specArray.forEach(function (e, i) {
         var block = document.createElement('div');
         var applicants = document.createElement('div');
@@ -684,52 +749,6 @@ bazaApplicantsB.onclick = () => {
 
         block.appendChild(applicants);
         applicant.appendChild(block);
-    });
-};
-
-settingB.onclick = () => {
-    creatApplicant.style.display = 'none';
-    bazaApplicant.style.display = 'none';
-    setting.style.display = 'inline-block';
-};
-
-var indexNoneBlock = 0;
-window.enterBlockSpec = e => {
-    document.getElementById('ap' + indexNoneBlock).style.display = "none";
-    document.getElementById('ap' + indexNumber).style.display = "block";
-    document.getElementById('ap' + indexNumber).innerHTML = "";
-
-    bazaApplicants.forEach(function (e, i) {
-        if (bazaApplicants[i].spec == specArray[indexNumber]) {
-            var block = document.createElement('div');
-            block.className = "fioBlockApllicant";
-            block.innerText = bazaApplicants[i].fio;
-
-            document.getElementById('ap' + indexNumber).appendChild(block);
-        }
-    });
-
-    indexNoneBlock = indexNumber;
-};
-
-var namePoisk = function () {
-    let key = 0;
-    let name = document.getElementById('poiskNameIn').value.split(' ');
-    bazaApplicants.forEach(function (e) {
-        let applicant = e.name.split(' ');
-        let summ = 0;
-        for (var i = 0; i != name.length; i++) {
-            for (var j = 0; j != applicant.length; j++) {
-                if (name[i].toLowerCase() == applicant[j].toLowerCase()) {
-                    summ++;
-                }
-            }
-        }
-        if (summ == name.length) {
-            alert(key);
-        }
-
-        key++;
     });
 };
 
@@ -773,7 +792,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "::-webkit-scrollbar {\r\n    width: 0px;\r\n}\r\n\r\n#window-menu {\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n    overflow: hidden;\r\n}\r\n\r\n#left-window-menu {\r\n    width: 10px;\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n}\r\n\r\n.central-window-menu {\r\n    width: 98%;\r\n    height: 100%;\r\n    margin: 10px auto;\r\n    display: inline-block;\r\n    float: right;\r\n    margin-top: 10px;\r\n    overflow: auto;\r\n}\r\n\r\n#left-window-menu:hover .buttons-navigation {\r\n    display: inline-block;\r\n}\r\n\r\n#spec {\r\n    width: 100%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n\r\n.menu {\r\n    display: none;\r\n    background: whitesmoke;\r\n    width: 98%;\r\n    border: 1px solid black;\r\n    overflow: scroll;\r\n    height: 90%;\r\n    border-radius: 5px;\r\n    padding: 10px;\r\n}\r\n\r\n.input-new-applicant {\r\n    display: block;\r\n    margin-top: 15px;\r\n}\r\n\r\n.input-new-applicant input {\r\n    width: 100%;\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n.input-new-applicant span {\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n#hello {\r\n    position: absolute;\r\n    background: whitesmoke;\r\n    width: 50%;\r\n    height: 120px;\r\n    text-align: center;\r\n    display: block;\r\n    margin: 20% 25%;\r\n    font-size: 26px;\r\n    border: 1px solid;\r\n    line-height: 50px;\r\n}\r\n\r\n.buttons-navigation {\r\n    width: 20px;\r\n    height: 160px;\r\n    display: none;\r\n    background: white;\r\n    cursor: pointer;\r\n    writing-mode: vertical-lr;\r\n    text-align: -webkit-center;\r\n    font-size: 21px;\r\n    border: 1px solid;\r\n    border-radius: 0 5px 5px 0;\r\n}\r\n\r\n.buttons-navigation:hover {\r\n    width: 60px;\r\n    line-height: 60px;\r\n    background: whitesmoke;\r\n    border: 2px solid;\r\n}\r\n\r\n#creatApplicant {\r\n    display: none;\r\n    background: white;\r\n    border: 1px solid;\r\n    overflow: auto;\r\n}\r\n\r\n.blockSpecka {\r\n    width: 100%;\r\n    margin: 15px auto;\r\n    background: mintcream;\r\n    border: 1px solid black;\r\n    font-size: 30px;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n}\r\n\r\n.blockApplicantsShow {\r\n    width: 95%;\r\n    border-radius: 0 0 5px 5px;\r\n    border: 1px solid;\r\n    margin: 0 auto;\r\n    display: table-caption;\r\n}\r\n\r\n#sorted {\r\n    width: 100%;\r\n    margin-top: -10px;\r\n    height: 40px;\r\n    font-size: 21px;\r\n}\r\n\r\n#poiskNameIN {\r\n    width: 200px;\r\n    font-size: 21px;\r\n    margin-top: 5px;\r\n}\r\n\r\n#namePoisk {\r\n    width: 60px;\r\n    height: 30px;\r\n    border: 1px solid black;\r\n    border-radius: 5px;\r\n    background: grey;\r\n    opacity: 0.5;\r\n    display: inline-flex;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}", ""]);
+exports.push([module.i, "::-webkit-scrollbar {\n    width: 0px;\n}\n\n#window-menu {\n    width: 100%;\n    height: 100%;\n    background: lightskyblue;\n    display: none;\n    overflow: hidden;\n}\n\n#left-window-menu {\n    width: 10px;\n    height: 100%;\n    margin-top: 90px;\n    display: inline-block;\n}\n\n.central-window-menu {\n    width: 98%;\n    height: 100%;\n    margin: 10px auto;\n    display: inline-block;\n    float: right;\n    margin-top: 10px;\n    overflow: auto;\n}\n\n#left-window-menu:hover .buttons-navigation {\n    display: inline-block;\n}\n\n#spec {\n    width: 100%;\n    font-family: monospace;\n    font-size: 21px;\n}\n\n.menu {\n    display: none;\n    background: whitesmoke;\n    width: 98%;\n    border: 1px solid black;\n    overflow: scroll;\n    height: 90%;\n    border-radius: 5px;\n    padding: 10px;\n}\n\n.input-new-applicant {\n    display: block;\n    margin-top: 15px;\n}\n\n.input-new-applicant input {\n    width: 100%;\n    font-size: 21px;\n    font-family: monospace;\n}\n\n.input-new-applicant span {\n    font-size: 21px;\n    font-family: monospace;\n}\n\n#hello {\n    position: absolute;\n    background: whitesmoke;\n    width: 50%;\n    height: 120px;\n    text-align: center;\n    display: block;\n    margin: 20% 25%;\n    font-size: 26px;\n    border: 1px solid;\n    line-height: 50px;\n}\n\n.buttons-navigation {\n    width: 20px;\n    height: 160px;\n    display: none;\n    background: white;\n    cursor: pointer;\n    writing-mode: vertical-lr;\n    text-align: -webkit-center;\n    font-size: 21px;\n    border: 1px solid;\n    border-radius: 0 5px 5px 0;\n}\n\n.buttons-navigation:hover {\n    width: 60px;\n    line-height: 60px;\n    background: whitesmoke;\n    border: 2px solid;\n}\n\n#creatApplicant {\n    display: none;\n    background: white;\n    border: 1px solid;\n    overflow: auto;\n}\n\n.blockSpecka {\n    width: 100%;\n    margin: 15px auto;\n    background: mintcream;\n    border: 1px solid black;\n    font-size: 30px;\n    cursor: pointer;\n    border-radius: 5px;\n}\n\n.blockApplicantsShow {\n    width: 95%;\n    border-radius: 0 0 5px 5px;\n    border: 1px solid;\n    margin: 0 auto;\n    display: table-caption;\n}\n\n#sorted {\n    width: 100%;\n    margin-top: -10px;\n    height: 40px;\n    font-size: 21px;\n}\n\n#poiskNameIN {\n    width: 90.8%;\n    font-size: 21px;\n    margin-top: 5px;\n}\n\n#namePoisk {\n    width: 60px;\n    height: 30px;\n    border: 1px solid black;\n    border-radius: 5px;\n    background: grey;\n    opacity: 0.5;\n    display: inline-flex;\n    text-align: center;\n    cursor: pointer;\n}\n\n#add-applicant{\n    width: 80%;\n    height: 50px;\n    border: 1px solid;\n    background: lightgrey;\n    font-size: 30px;\n    text-align: center;\n    font-family: monospace;\n    margin: 20px auto 20px;\n    line-height: 50px;\n    cursor: pointer;\n}\n#modal-password{\n    display: none;\n    margin: 15% 35%;\n    position: fixed;\n    text-align: center;\n    font-size: 35px;\n    width: 500px;\n    height: 180px;\n    background: lightskyblue;\n    border-radius: 40px;\n    border: 15px solid gainsboro;\n    font-family: monospace;\n}\n#enter-password-modal{\n    width: 50%;\n    height: 50px;\n    border: 1px solid;\n    background: lightgrey;\n    margin: 35px auto;\n    cursor: pointer;\n}\n#password-modal{\n    width: 80%;\n    font-family: monospace;\n    font-size: 21px;\n}", ""]);
 
 // exports
 

@@ -130,7 +130,7 @@
 }
 
 #poiskNameIN {
-    width: 200px;
+    width: 90.8%;
     font-size: 21px;
     margin-top: 5px;
 }
@@ -145,4 +145,43 @@
     display: inline-flex;
     text-align: center;
     cursor: pointer;
+}
+
+#add-applicant{
+    width: 80%;
+    height: 50px;
+    border: 1px solid;
+    background: lightgrey;
+    font-size: 30px;
+    text-align: center;
+    font-family: monospace;
+    margin: 20px auto 20px;
+    line-height: 50px;
+    cursor: pointer;
+}
+#modal-password{
+    display: none;
+    margin: 15% 35%;
+    position: fixed;
+    text-align: center;
+    font-size: 35px;
+    width: 500px;
+    height: 180px;
+    background: lightskyblue;
+    border-radius: 40px;
+    border: 15px solid gainsboro;
+    font-family: monospace;
+}
+#enter-password-modal{
+    width: 50%;
+    height: 50px;
+    border: 1px solid;
+    background: lightgrey;
+    margin: 35px auto;
+    cursor: pointer;
+}
+#password-modal{
+    width: 80%;
+    font-family: monospace;
+    font-size: 21px;
 }

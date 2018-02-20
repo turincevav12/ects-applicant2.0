@@ -7,7 +7,7 @@ ipcRenderer.send(['users', 'spec', 'applicant']);
 
 const login = JSON.parse(readFileSync('./src/data/login.json')).login;
 window.specArray = JSON.parse(readFileSync('./src/data/spec.json')).spec;
-window.bazaApplicants = JSON.parse(readFileSync('./src/data/applicant.json')).applicants;
+window.bazaApplicants = JSON.parse(readFileSync('./src/data/applicant.json'));
 
 window.onload = () => {
     var enter = document.getElementsByClassName('enter-autorization')[0]
@@ -18,6 +18,7 @@ window.onload = () => {
         for (var i = 0; i != login.length; i++){
             if(name.value == login[i].login && password.value == login[i].password){
                 alert('Вы вошли')
+                console.log(bazaApplicants)
                 document.getElementById('user').style.display="none"
                 document.getElementById('window-menu').style.display="block"
             }else{

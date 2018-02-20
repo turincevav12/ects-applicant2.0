@@ -19,6 +19,11 @@
     </div>
 
     <div id="window-menu">
+        <div id="modal-password">
+            <span>подтверждение</span><br>
+            <input type="text" id="password-modal" value=""/>
+            <div id="enter-password-modal">подтвердить</div>
+        </div>
         <div id="left-window-menu">
             <div class="buttons-navigation">Создать</div><br>
             <div class="buttons-navigation">База</div><br>
@@ -33,63 +38,153 @@
             <div id="new-applicant" class="menu">
                 <div class="input-new-applicant">
                     <span>от ФИО</span>
-                    <input id="fio" type="text" />
+                    <input id="fio" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Дата рождения</span>
-                    <input id="data-happi" type="date" />
+                    <input id="data-happi" class="input" type="date" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Место рождения</span>
-                    <input id="place-of-birth" type="text" />
+                    <input id="place-of-birth" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Гражданство</span>
-                    <input id="citizenship" type="text" />
+                    <input id="citizenship" class="input" type="text" />
                 </div>
 
                 <div class="input-new-applicant">
                     <span>Документы, удостоверяющий личность</span>
-                    <input id="document" type="text" />
+                    <input id="document" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Серия</span>
-                    <input id="seria" maxlength="4" type="text" placeholder="----" />
+                    <input id="seria" class="input" maxlength="4" type="number" placeholder="----" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Номер</span>
-                    <input id="number" maxlength="6" type="text" placeholder="------" />
+                    <input id="number" class="input" maxlength="6" type="number" placeholder="------" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Когда и кем выдан паспорт</span>
-                    <input id="issued" type="text" />
+                    <input id="issued" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Адрес регистрации(по паспорту)</span>
-                    <input id="regestration-of-passport" type="text" />
+                    <input id="regestration-of-passport" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Адрес жительства</span>
-                    <input id="adres-now" type="text" />
+                    <input id="adres-now" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Индекс</span>
-                    <input id="index" type="text" />
+                    <input id="index" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Сотовый тел.</span>
-                    <input id="call-sot" type="text" />
+                    <input id="call-sot" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Домашний тел.</span>
-                    <input id="call-houm" type="text" />
+                    <input id="call-houm" class="input" type="text" />
                 </div>
                 <div class="input-new-applicant">
                     <span>Выберите специальность</span>
-                    <select id="spec">
+                    <select id="spec" class="input">
                                 
                     </select>
                 </div>
+                <div class="input-new-applicant">
+                    <span>Уровень подготовки</span>
+                    <select id="level" class="input">
+                        <option>Базовый</option>
+                        <option>Углубленный</option>
+                    </select>
+                </div>
+                <div class="input-new-applicant">
+                    <span>В общежитии</span>
+                    <select id="obchaga" class="input">
+                        <option>Нуждаюсь</option>
+                        <option>Не нуждаюсь</option>
+                    </select>
+                </div>
+                <div class="input-new-applicant">
+                    <span>На место</span>
+                    <select id="mesto-money" class="input">
+                        <option>финансируемые из областного бюджета</option>
+                        <option>за счет средств физических и (или) юридических лиц (по договору об образовании) </option>
+                    </select>
+                </div>
+                <div class="input-new-applicant">
+                    <span>Окончил(а) в</span>
+                    <input type="date" class="input" id="end-shool-data"/>
+                    <span>году</span>
+                    <input type="text" class="input" id="name-shool"/>
+                    <span>(полное наименование учреждения)</span>
+                </div>
+                <div class="input-new-applicant">
+                    <span>Документ об образовании и (или) квалификации серия</span>
+                    <input type="number" class="input" id="seriy-shool">
+                    <span>номер</span>
+                    <input type="number" class="input" id="number-shool">
+                </div>
+                <div class="input-new-applicant">
+                    <span>Иностранный язык:</span>
+                    <select  id="language" class="input">
+                        <option>английский</option>
+                        <option>немецкий</option>
+                        <option>французский</option>
+                        <option>другой</option>
+                        <option>не изучал</option>
+                    </select>
+                </div>
+                <div class="input-new-applicant">
+                    <span>Отец (ФИО)</span>
+                    <input type="text" class="input" id="phaser-name">
+
+                    <span>Место работы</span>
+                    <input type="text" class="input" id="phaser-job">
+
+                    <span>Должность</span>
+                    <input type="text" class="input" id="phaser-job-mesto">
+
+                    <span>Рабочий телефон</span>
+                    <input type="tel" class="input" id="phaser-job-phone">
+                    
+                    <span>Сотовый телефон</span>
+                    <input type="tel" class="input" id="phaser-mobile">
+                </div>
+                <div class="input-new-applicant">
+                    <span>Мать (ФИО)</span>
+                    <input type="text" class="input" id="mother-name">
+
+                    <span>Место работы</span>
+                    <input type="text" class="input" id="mother-job">
+
+                    <span>Должность</span>
+                    <input type="text" class="input" id="mother-job-mesto">
+
+                    <span>Рабочий телефон</span>
+                    <input type="tel" class="input" id="mother-job-phone">
+                    
+                    <span>Сотовый телефон</span>
+                    <input type="tel" class="input" id="mother-mobile">
+                </div>
+                <div class="input-new-applicant">
+                    <span>Служба в армии</span>
+                    <select id="army" class="input">
+                        <option>Служил</option>
+                        <option>Не служил</option>
+                    </select>
+                </div>
+                <div class="input-new-applicant">
+                    <span>Инные данные</span>
+                    <input type="text" class="input" id="info">
+                </div>
+
+
+                <div id="add-applicant">Проверить и добавть</div>
             </div>
 
             <div id="bazaApplicant" class="menu">
@@ -111,9 +206,10 @@
         </div>
     </div>
 
-
+    
     <script src="dist/user.js"></script>
     <script src="dist/window.js"></script>
+    <script src="dist/add.js"></script>
 </body>
 
 </html>

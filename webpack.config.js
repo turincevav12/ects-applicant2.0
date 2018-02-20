@@ -6,7 +6,8 @@ module.exports = {
 
   entry: {
     user: dr('src/scripts/user'),
-    window: dr('src/scripts/window-menu')
+    window: dr('src/scripts/window-menu'),
+    add: dr('src/scripts/add')
   },
 
   output: {
