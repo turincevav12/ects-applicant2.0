@@ -689,20 +689,44 @@ settingB.onclick = () => {
 };
 
 window.enterBlockSpec = () => {
-    applicant.innerHTML = "";
-    console.log(bazaApplicants[indexNumber].length);
-    if (bazaApplicants[indexNumber].length == 0) {
-        let block = document.createElement('div');
-        let appectNoApplicant = document.createElement('div');
-        block.id = 'noApplicant';
-        appectNoApplicant.id = 'appectNoApplicant';
+    let nameSpec = document.getElementById(indexNumber).innerText.split(' ')[0];
+    let massSpec = [];
 
-        block.innerText = "Записей нет";
-        appectNoApplicant.innerText = "Вернуться";
+    for (let i = 0; i != bazaApplicants.length; i++) {
+        let numSpec = bazaApplicants[i].spec.split(' ')[0];
+        if (numSpec == nameSpec) {
+            massSpec.push(i);
+        }
+    }
+    if (massSpec.length != 0) {
+        applicant.innerHTML = "";
 
-        block.appendChild(appectNoApplicant);
-        applicant.appendChild(block);
-    } else {}
+        backToSpec();
+
+        for (let i = 0; i != massSpec.length; i++) {
+            let lineApplcantToSpec = document.createElement('div');
+            let spanFioToSpec = document.createElement('span');
+            let yearToSpec = document.createElement('span');
+
+            lineApplcantToSpec.onclick = function () {
+                window.lineApplcantToSpecNumber = massSpec[i];
+                clickToApplicantNumber();
+            };
+
+            lineApplcantToSpec.className = 'lineApplcant';
+            spanFioToSpec.className = 'spanApplicansPoisk';
+            yearToSpec.className = 'spanApplicansPoisk';
+
+            spanFioToSpec.innerText = bazaApplicants[massSpec[i]].fio;
+            yearToSpec.innerText = bazaApplicants[massSpec[i]].dataHappi;
+
+            lineApplcantToSpec.appendChild(spanFioToSpec);
+            lineApplcantToSpec.appendChild(yearToSpec);
+            applicants.appendChild(lineApplcantToSpec);
+        }
+    } else {
+        alert('По вашему запросу данных не найдено');
+    }
 };
 
 var namePoisk = function () {
@@ -710,7 +734,7 @@ var namePoisk = function () {
     let indexApplicant = [];
     let name = document.getElementById('poiskNameIn').value.split(' ');
     bazaApplicants.forEach(function (e) {
-        let applicant = e.name.split(' ');
+        let applicant = e.fio.split(' ');
         let summ = 0;
         for (var i = 0; i != name.length; i++) {
             for (var j = 0; j != applicant.length; j++) {
@@ -722,16 +746,48 @@ var namePoisk = function () {
         if (summ == name.length) {
             indexApplicant.push(key);
         }
-
         key++;
     });
+    if (indexApplicant.length != 0) {
+        applicant.innerHTML = "";
 
-    for (var i = 0; i != indexApplicant.length; i++) {
-        let lineApplcant = document.createElement('div');
+        backToSpec();
+
+        indexApplicant.forEach(function (e) {
+            let lineApplcant = document.createElement('div');
+            let fioB = document.createElement('span');
+            let yearB = document.createElement('span');
+            let specB = document.createElement('span');
+            let br = document.createElement('br');
+
+            lineApplcant.onclick = function () {
+                window.lineApplcantToSpecNumber = e;
+                clickToApplicantNumber();
+            };
+
+            lineApplcant.className = "lineApplcant";
+            fioB.className = "spanApplicansPoisk";
+            yearB.className = "spanApplicansPoisk";
+            specB.className = "spanApplicansPoisk";
+
+            fioB.innerText = bazaApplicants[e].fio;
+            yearB.innerText = bazaApplicants[e].dataHappi;
+            specB.innerText = bazaApplicants[e].spec;
+
+            lineApplcant.appendChild(fioB);
+            lineApplcant.appendChild(yearB);
+            lineApplcant.appendChild(br);
+            lineApplcant.appendChild(specB);
+
+            applicants.appendChild(lineApplcant);
+        });
+    } else {
+        alert('По вашему запросу данных не найдено');
     }
 };
 
 var creatSpec = function () {
+    applicant.innerHTML = "";
     specArray.forEach(function (e, i) {
         var block = document.createElement('div');
         var applicants = document.createElement('div');
@@ -750,6 +806,20 @@ var creatSpec = function () {
         block.appendChild(applicants);
         applicant.appendChild(block);
     });
+};
+
+var backToSpec = function () {
+    let backMenu = document.createElement('div');
+    backMenu.innerText = "Вернуться в меню";
+    backMenu.id = 'backMenu';
+    backMenu.onclick = function () {
+        creatSpec();
+    };
+    applicants.appendChild(backMenu);
+};
+
+var clickToApplicantNumber = function () {
+    alert(lineApplcantToSpecNumber);
 };
 
 /***/ }),
@@ -792,7 +862,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "::-webkit-scrollbar {\n    width: 0px;\n}\n\n#window-menu {\n    width: 100%;\n    height: 100%;\n    background: lightskyblue;\n    display: none;\n    overflow: hidden;\n}\n\n#left-window-menu {\n    width: 10px;\n    height: 100%;\n    margin-top: 90px;\n    display: inline-block;\n}\n\n.central-window-menu {\n    width: 98%;\n    height: 100%;\n    margin: 10px auto;\n    display: inline-block;\n    float: right;\n    margin-top: 10px;\n    overflow: auto;\n}\n\n#left-window-menu:hover .buttons-navigation {\n    display: inline-block;\n}\n\n#spec {\n    width: 100%;\n    font-family: monospace;\n    font-size: 21px;\n}\n\n.menu {\n    display: none;\n    background: whitesmoke;\n    width: 98%;\n    border: 1px solid black;\n    overflow: scroll;\n    height: 90%;\n    border-radius: 5px;\n    padding: 10px;\n}\n\n.input-new-applicant {\n    display: block;\n    margin-top: 15px;\n}\n\n.input-new-applicant input {\n    width: 100%;\n    font-size: 21px;\n    font-family: monospace;\n}\n\n.input-new-applicant span {\n    font-size: 21px;\n    font-family: monospace;\n}\n\n#hello {\n    position: absolute;\n    background: whitesmoke;\n    width: 50%;\n    height: 120px;\n    text-align: center;\n    display: block;\n    margin: 20% 25%;\n    font-size: 26px;\n    border: 1px solid;\n    line-height: 50px;\n}\n\n.buttons-navigation {\n    width: 20px;\n    height: 160px;\n    display: none;\n    background: white;\n    cursor: pointer;\n    writing-mode: vertical-lr;\n    text-align: -webkit-center;\n    font-size: 21px;\n    border: 1px solid;\n    border-radius: 0 5px 5px 0;\n}\n\n.buttons-navigation:hover {\n    width: 60px;\n    line-height: 60px;\n    background: whitesmoke;\n    border: 2px solid;\n}\n\n#creatApplicant {\n    display: none;\n    background: white;\n    border: 1px solid;\n    overflow: auto;\n}\n\n.blockSpecka {\n    width: 100%;\n    margin: 15px auto;\n    background: mintcream;\n    border: 1px solid black;\n    font-size: 30px;\n    cursor: pointer;\n    border-radius: 5px;\n}\n\n.blockApplicantsShow {\n    width: 95%;\n    border-radius: 0 0 5px 5px;\n    border: 1px solid;\n    margin: 0 auto;\n    display: table-caption;\n}\n\n#sorted {\n    width: 100%;\n    margin-top: -10px;\n    height: 40px;\n    font-size: 21px;\n}\n\n#poiskNameIN {\n    width: 90.8%;\n    font-size: 21px;\n    margin-top: 5px;\n}\n\n#namePoisk {\n    width: 60px;\n    height: 30px;\n    border: 1px solid black;\n    border-radius: 5px;\n    background: grey;\n    opacity: 0.5;\n    display: inline-flex;\n    text-align: center;\n    cursor: pointer;\n}\n\n#add-applicant{\n    width: 80%;\n    height: 50px;\n    border: 1px solid;\n    background: lightgrey;\n    font-size: 30px;\n    text-align: center;\n    font-family: monospace;\n    margin: 20px auto 20px;\n    line-height: 50px;\n    cursor: pointer;\n}\n#modal-password{\n    display: none;\n    margin: 15% 35%;\n    position: fixed;\n    text-align: center;\n    font-size: 35px;\n    width: 500px;\n    height: 180px;\n    background: lightskyblue;\n    border-radius: 40px;\n    border: 15px solid gainsboro;\n    font-family: monospace;\n}\n#enter-password-modal{\n    width: 50%;\n    height: 50px;\n    border: 1px solid;\n    background: lightgrey;\n    margin: 35px auto;\n    cursor: pointer;\n}\n#password-modal{\n    width: 80%;\n    font-family: monospace;\n    font-size: 21px;\n}", ""]);
+exports.push([module.i, "::-webkit-scrollbar {\r\n    width: 0px;\r\n}\r\n\r\n#window-menu {\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n    overflow: hidden;\r\n}\r\n\r\n#left-window-menu {\r\n    width: 10px;\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n}\r\n\r\n.central-window-menu {\r\n    width: 98%;\r\n    height: 100%;\r\n    margin: 10px auto;\r\n    display: inline-block;\r\n    float: right;\r\n    margin-top: 10px;\r\n    overflow: auto;\r\n}\r\n\r\n#left-window-menu:hover .buttons-navigation {\r\n    display: inline-block;\r\n}\r\n\r\n#spec {\r\n    width: 100%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n\r\n.menu {\r\n    display: none;\r\n    background: whitesmoke;\r\n    width: 98%;\r\n    border: 1px solid black;\r\n    overflow: scroll;\r\n    height: 90%;\r\n    border-radius: 5px;\r\n    padding: 10px;\r\n}\r\n\r\n.input-new-applicant {\r\n    display: block;\r\n    margin-top: 15px;\r\n}\r\n\r\n.input-new-applicant input {\r\n    width: 100%;\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n.input-new-applicant span {\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n#hello {\r\n    position: absolute;\r\n    background: whitesmoke;\r\n    width: 50%;\r\n    height: 120px;\r\n    text-align: center;\r\n    display: block;\r\n    margin: 20% 25%;\r\n    font-size: 26px;\r\n    border: 1px solid;\r\n    line-height: 50px;\r\n}\r\n\r\n.buttons-navigation {\r\n    width: 20px;\r\n    height: 160px;\r\n    display: none;\r\n    background: white;\r\n    cursor: pointer;\r\n    writing-mode: vertical-lr;\r\n    text-align: -webkit-center;\r\n    font-size: 21px;\r\n    border: 1px solid;\r\n    border-radius: 0 5px 5px 0;\r\n}\r\n\r\n.buttons-navigation:hover {\r\n    width: 60px;\r\n    line-height: 60px;\r\n    background: whitesmoke;\r\n    border: 2px solid;\r\n}\r\n\r\n#creatApplicant {\r\n    display: none;\r\n    background: white;\r\n    border: 1px solid;\r\n    overflow: auto;\r\n}\r\n\r\n.blockSpecka {\r\n    width: 100%;\r\n    margin: 15px auto;\r\n    background: mintcream;\r\n    border: 1px solid black;\r\n    font-size: 30px;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n}\r\n\r\n.blockApplicantsShow {\r\n    width: 95%;\r\n    border-radius: 0 0 5px 5px;\r\n    border: 1px solid;\r\n    margin: 0 auto;\r\n    display: table-caption;\r\n}\r\n\r\n#sorted {\r\n    width: 100%;\r\n    margin-top: -10px;\r\n    height: 40px;\r\n    font-size: 21px;\r\n}\r\n\r\n#poiskNameIN {\r\n    width: 90.8%;\r\n    font-size: 21px;\r\n    margin-top: 5px;\r\n}\r\n\r\n#namePoisk {\r\n    width: 60px;\r\n    height: 30px;\r\n    border: 1px solid black;\r\n    border-radius: 5px;\r\n    background: grey;\r\n    opacity: 0.5;\r\n    display: inline-flex;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}\r\n\r\n#add-applicant {\r\n    width: 80%;\r\n    height: 50px;\r\n    border: 1px solid;\r\n    background: lightgrey;\r\n    font-size: 30px;\r\n    text-align: center;\r\n    font-family: monospace;\r\n    margin: 20px auto 20px;\r\n    line-height: 50px;\r\n    cursor: pointer;\r\n}\r\n\r\n#modal-password {\r\n    display: none;\r\n    margin: 15% 35%;\r\n    position: fixed;\r\n    text-align: center;\r\n    font-size: 35px;\r\n    width: 500px;\r\n    height: 180px;\r\n    background: lightskyblue;\r\n    border-radius: 40px;\r\n    border: 15px solid gainsboro;\r\n    font-family: monospace;\r\n}\r\n\r\n#enter-password-modal {\r\n    width: 50%;\r\n    height: 50px;\r\n    border: 1px solid;\r\n    background: lightgrey;\r\n    margin: 35px auto;\r\n    cursor: pointer;\r\n}\r\n\r\n#password-modal {\r\n    width: 80%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n\r\n.lineApplcant {\r\n    width: 80%;\r\n    height: auto;\r\n    min-height: 50px;\r\n    text-align: center;\r\n    margin: 20px auto;\r\n    background: skyblue;\r\n    line-height: 50px;\r\n    font-size: 25px;\r\n    font-family: monospace;\r\n    border: 1px solid;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n.spanApplicansPoisk {\r\n    margin: 20px;\r\n    color: black;\r\n}\r\n\r\n#backMenu {\r\n    width: 100%;\r\n    text-align: center;\r\n    font-family: monospace;\r\n    font-size: 20px;\r\n    height: 20px;\r\n    cursor: pointer;\r\n}", ""]);
 
 // exports
 

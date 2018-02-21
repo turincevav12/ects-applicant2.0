@@ -147,7 +147,7 @@
     cursor: pointer;
 }
 
-#add-applicant{
+#add-applicant {
     width: 80%;
     height: 50px;
     border: 1px solid;
@@ -159,7 +159,8 @@
     line-height: 50px;
     cursor: pointer;
 }
-#modal-password{
+
+#modal-password {
     display: none;
     margin: 15% 35%;
     position: fixed;
@@ -172,7 +173,8 @@
     border: 15px solid gainsboro;
     font-family: monospace;
 }
-#enter-password-modal{
+
+#enter-password-modal {
     width: 50%;
     height: 50px;
     border: 1px solid;
@@ -180,8 +182,38 @@
     margin: 35px auto;
     cursor: pointer;
 }
-#password-modal{
+
+#password-modal {
     width: 80%;
     font-family: monospace;
     font-size: 21px;
+}
+
+.lineApplcant {
+    width: 80%;
+    height: auto;
+    min-height: 50px;
+    text-align: center;
+    margin: 20px auto;
+    background: skyblue;
+    line-height: 50px;
+    font-size: 25px;
+    font-family: monospace;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.spanApplicansPoisk {
+    margin: 20px;
+    color: black;
+}
+
+#backMenu {
+    width: 100%;
+    text-align: center;
+    font-family: monospace;
+    font-size: 20px;
+    height: 20px;
+    cursor: pointer;
 }

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -614,15 +614,27 @@ module.exports = function (css) {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_user_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_fs__);
 
 
@@ -655,13 +667,13 @@ window.onload = () => {
 };
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(5);
+var content = __webpack_require__(7);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -686,7 +698,7 @@ if(false) {
 }
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -694,22 +706,10 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "body{\n    margin: 0;\n    background: white;\n    font-size: 18px;\n}\n#user{\n    width: 500px;\n    height: 350px;\n    background: lightskyblue;\n    margin: 10% auto;\n    border-radius: 40px;\n    border: 15px solid gainsboro;\n    font-family: monospace;\n}\n.top-line-autorization{\n    width: 90%;\n    margin: 10px auto;\n    height: 40px;\n    font-size: 40px;\n    color: white;\n}\n.body-autorization{\n    width: 90%;\n    height: calc(100% - 160px);\n    margin: 10px auto;\n    font-size: 28px;\n}\n.login{\n    font-size: 21px;\n    width: 100%;\n}\n.enter-autorization{\n    width: 50%;\n    height: 15%;\n    background: lightblue;\n    margin: 0 auto;\n    border-radius: 5px;\n    border: 1px solid cadetblue;\n    cursor: pointer;\n    font-size: 30px;\n    line-height: 50px;\n    text-align: center;\n}", ""]);
+exports.push([module.i, "body{\r\n    margin: 0;\r\n    background: white;\r\n    font-size: 18px;\r\n}\r\n#user{\r\n    width: 500px;\r\n    height: 350px;\r\n    background: lightskyblue;\r\n    margin: 10% auto;\r\n    border-radius: 40px;\r\n    border: 15px solid gainsboro;\r\n    font-family: monospace;\r\n}\r\n.top-line-autorization{\r\n    width: 90%;\r\n    margin: 10px auto;\r\n    height: 40px;\r\n    font-size: 40px;\r\n    color: white;\r\n}\r\n.body-autorization{\r\n    width: 90%;\r\n    height: calc(100% - 160px);\r\n    margin: 10px auto;\r\n    font-size: 28px;\r\n}\r\n.login{\r\n    font-size: 21px;\r\n    width: 100%;\r\n}\r\n.enter-autorization{\r\n    width: 50%;\r\n    height: 15%;\r\n    background: lightblue;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    border: 1px solid cadetblue;\r\n    cursor: pointer;\r\n    font-size: 30px;\r\n    line-height: 50px;\r\n    text-align: center;\r\n}", ""]);
 
 // exports
 
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("electron");
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
 
 /***/ })
 /******/ ]);
