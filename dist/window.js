@@ -613,7 +613,12 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 3 */,
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
+
+/***/ }),
 /* 4 */,
 /* 5 */,
 /* 6 */,
@@ -625,6 +630,9 @@ module.exports = function (css) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
+
 
 
 var newApplicantB = document.getElementsByClassName('buttons-navigation')[0];
@@ -820,6 +828,7 @@ var backToSpec = function () {
 
 var clickToApplicantNumber = function () {
     alert(lineApplcantToSpecNumber);
+    __WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].send('formToApplicant');
 };
 
 /***/ }),

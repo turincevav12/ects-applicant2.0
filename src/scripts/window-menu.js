@@ -1,5 +1,5 @@
 import '../styles/window-menu.css'
-
+import { ipcRenderer } from 'electron'
 
 var newApplicantB = document.getElementsByClassName('buttons-navigation')[0]
 var bazaApplicantsB = document.getElementsByClassName('buttons-navigation')[1]
@@ -198,4 +198,5 @@ var backToSpec = function() {
 
 var clickToApplicantNumber = function() {
     alert(lineApplcantToSpecNumber)
+    ipcRenderer.send('formToApplicant')
 }

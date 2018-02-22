@@ -23,7 +23,15 @@ app.on('ready', function() {
         fullscreen: true,
         show: false
     });
-	
+    
+    formToApplicant = new BrowserWindow({
+        width: 800,
+        height: 600,
+        frame: false, 
+        fullscreen: true,
+        show: false
+    })
+
     mainWindow.setTitle(appTitle);
     globalShortcut.register('Control + Q', () => {
         app.quit();
@@ -38,8 +46,15 @@ app.on('ready', function() {
     ipcMain.on('applicant', function(event){
         event.sender.send('data', spec)
     });
+    
 
 
     mainWindow.loadURL(__dirname + '/index.html');
     mainWindow.show();    
+
+    formToApplicant.loadURL(__dirname + '/form-print.html')
+    ipcMain.on('formToApplicant', (event, data) => {
+        formToApplicant.show();
+    })
+
 });
