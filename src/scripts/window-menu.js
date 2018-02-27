@@ -1,5 +1,6 @@
 import '../styles/window-menu.css'
 import { ipcRenderer } from 'electron'
+import { readFileSync, writeFile } from 'fs';
 
 var newApplicantB = document.getElementsByClassName('buttons-navigation')[0]
 var bazaApplicantsB = document.getElementsByClassName('buttons-navigation')[1]
@@ -12,6 +13,7 @@ var hello = document.getElementById('hello')
 var applicant = document.getElementById('applicants')
 var show = document.getElementById('modal-password')
 var accept = document.getElementById('enter-password-modal')
+var reset = document.getElementById('cog')
 
 
 
@@ -66,6 +68,8 @@ settingB.onclick = () => {
 }
 
 window.enterBlockSpec = () => {
+    resetFile()
+    let bazaApplicants = JSON.parse(readFileSync('./src/data/applicant.json'));
     let nameSpec = ((document.getElementById(indexNumber).innerText).split(' '))[0]
     let massSpec = []
 
@@ -88,6 +92,7 @@ window.enterBlockSpec = () => {
             lineApplcantToSpec.onclick = function() {
                 window.lineApplcantToSpecNumber = massSpec[i]
                 clickToApplicantNumber()
+                creatModalWindow()
             }
 
             lineApplcantToSpec.className = 'lineApplcant'
@@ -108,6 +113,7 @@ window.enterBlockSpec = () => {
 }
 
 var namePoisk = function() {
+    resetFile()
     let key = 0
     let indexApplicant = []
     let name = (document.getElementById('poiskNameIn').value).split(' ')
@@ -140,6 +146,7 @@ var namePoisk = function() {
 
             lineApplcant.onclick = function() {
                 window.lineApplcantToSpecNumber = e
+                creatModalWindow()
                 clickToApplicantNumber()
             }
 
@@ -158,6 +165,8 @@ var namePoisk = function() {
             lineApplcant.appendChild(specB)
 
             applicants.appendChild(lineApplcant)
+
+            
         })
     } else {
         alert('По вашему запросу данных не найдено')
@@ -165,6 +174,7 @@ var namePoisk = function() {
 }
 
 var creatSpec = function() {
+    resetFile()
     applicant.innerHTML = ""
     specArray.forEach(function(e, i) {
         var block = document.createElement('div')
@@ -183,10 +193,13 @@ var creatSpec = function() {
 
         block.appendChild(applicants)
         applicant.appendChild(block)
+
+        
     })
 }
 
 var backToSpec = function() {
+    resetFile()
     let backMenu = document.createElement('div')
     backMenu.innerText = "Вернуться в меню"
     backMenu.id = 'backMenu'
@@ -197,6 +210,32 @@ var backToSpec = function() {
 }
 
 var clickToApplicantNumber = function() {
-    alert(lineApplcantToSpecNumber)
-    ipcRenderer.send('formToApplicant')
+    resetFile()
+    document.getElementById("pause").style.display = "block"   
+    document.getElementById('window-menu').style.opacity = 0.2
+
+    let numApp = JSON.parse(readFileSync('./src/data/login.json'));
+    numApp.sp.splice(0,1)
+    numApp.sp.push({"num":lineApplcantToSpecNumber})
+
+    writeFile('./src/data/login.json', JSON.stringify(numApp, null, '\t')) 
+    setTimeout(function(){
+        ipcRenderer.send('formToApplicant')
+        document.getElementById("pause").style.display = "none"
+        document.getElementById('window-menu').style.opacity = 1
+        creatModalWindow()
+    }, 3000)
+}
+
+var creatModalWindow = function(){
+    resetFile()
+    document.getElementById('window-menu').style.opacity = 0.2
+    document.getElementById('modalResetWindow').style.display = "block"
+}
+
+reset.onclick = function(){
+    resetFile()
+    creatSpec()
+    document.getElementById('window-menu').style.opacity = 1
+    document.getElementById('modalResetWindow').style.display = "none"
 }

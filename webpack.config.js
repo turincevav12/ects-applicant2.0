@@ -7,7 +7,8 @@ module.exports = {
   entry: {
     user: dr('src/scripts/user'),
     window: dr('src/scripts/window-menu'),
-    add: dr('src/scripts/add')
+    add: dr('src/scripts/add'),
+    print: dr('src/scripts/print')
   },
 
   output: {

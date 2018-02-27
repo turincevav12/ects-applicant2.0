@@ -23,14 +23,6 @@ app.on('ready', function() {
         fullscreen: true,
         show: false
     });
-    
-    formToApplicant = new BrowserWindow({
-        width: 800,
-        height: 600,
-        frame: false, 
-        fullscreen: true,
-        show: false
-    })
 
     mainWindow.setTitle(appTitle);
     globalShortcut.register('Control + Q', () => {
@@ -52,9 +44,21 @@ app.on('ready', function() {
     mainWindow.loadURL(__dirname + '/index.html');
     mainWindow.show();    
 
-    formToApplicant.loadURL(__dirname + '/form-print.html')
     ipcMain.on('formToApplicant', (event, data) => {
+        formToApplicant = new BrowserWindow({
+            width: 800,
+            height: 600,
+            frame: false, 
+            fullscreen: true,
+            show: false
+        })
+        formToApplicant.loadURL(__dirname + '/form-print.html')
         formToApplicant.show();
     })
+    ipcMain.on('closeFormToApplicant', (event, data) => {
+        formToApplicant.close();
+        require('electron').shell.openExternal('form-print.html')
+    }) 
+
 
 });

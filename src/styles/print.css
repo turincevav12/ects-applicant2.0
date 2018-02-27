@@ -1,10 +1,15 @@
+::-webkit-scrollbar{
+    width: 0px;
+}
+
 html {
     margin: 0;
     font-size: 12px;
 }
 
+
 body {
-    width: 95%;
+    width: 100%;
     margin: 0;
 }
 
@@ -217,4 +222,14 @@ body {
 .navigations:hover{
     color: brown;
     background: lightgrey;
+}
+#showApplicant{
+    display: block;
+    
+}
+#readApplicant{
+    display: block;
+    background: whitesmoke;
+    padding: 10px;
+    display: none;
 }

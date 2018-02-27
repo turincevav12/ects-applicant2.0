@@ -8,6 +8,7 @@
     background: lightskyblue;
     display: none;
     overflow: hidden;
+    z-index: 1;
 }
 
 #left-window-menu {
@@ -172,6 +173,7 @@
     border-radius: 40px;
     border: 15px solid gainsboro;
     font-family: monospace;
+    z-index: 2;
 }
 
 #enter-password-modal {
@@ -217,3 +219,99 @@
     height: 20px;
     cursor: pointer;
 }
+.modalWindow{
+    width: 400px;
+    height: 130px;
+    background: lightblue;
+    font-size: 30px;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 5px;
+    margin: 20% 35%;
+    position: fixed;
+    line-height: 70px;
+    font-family: monospace;
+    cursor: context-menu;
+    z-index: 2;
+    display: none;
+}
+.modalWindow1{
+    width: 400px;
+    height: 130px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20% 35%;
+    position: fixed;
+    line-height: 70px;
+    font-family: monospace;
+    cursor: context-menu;
+    z-index: 2;
+    display: none;
+}
+.modalResetBlock:hover {
+    cursor: pointer;
+    -webkit-animation-name: cog;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+   
+    animation-name: cog;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  @-ms-keyframes cog {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+  }
+  @-moz-keyframes cog {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes cog {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes cog {
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+      transform:rotate(360deg);
+    }
+  }
+
+
+  .modalPauseWIndow {
+    cursor: pointer;
+    -webkit-animation-name: cof;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+   
+    animation-name: cof;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  @-ms-keyframes cof {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+  }
+  @-moz-keyframes cof {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes cof {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes cof {
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+      transform:rotate(360deg);
+    }
+  }

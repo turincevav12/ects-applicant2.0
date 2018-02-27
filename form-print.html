@@ -1,202 +1,364 @@
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="src/styles/window-menu.css" />
     <link rel="stylesheet" type="text/css" href="src/styles/print.css" />
 </head>
 
 <body>
-    <div id="creatApplicant">
-        <div id="bottom">
-            <div id="image">
+    <div id="showApplicant">
+        <div id="creatApplicants">
+            <div id="bottom">
+                <div id="image">
+                </div>
+                <div id="text-bottom">
+                    <div id="line-bottom-text">
+                        <span class="text-big" id="regestration-number">Регистрационный №_____</span>
+                        <span class="text-small" id="text-bottom-right">
+                                Зачислить на ______ курс<br>
+                                Специальности___________<br>
+                                Приказ №_____ от "__"_______ 2017г.<br>
+                                Директор____________ Д.В.Шевченко
+                            </span>
+                    </div><br>
+                    <div id="line-top-text">
+                        <span class="text-big" id="text-line-top">
+                                Директору государственного автономного проффесионального<br>
+                                образовательного учреждения Свердловской области "Екатеринбургский колледж<br>
+                                транспортного строительства" Шевченко Денису Валерьевичу<br>
+                            </span>
+                    </div>
+                </div>
             </div>
-            <div id="text-bottom">
-                <div id="line-bottom-text">
-                    <span class="text-big" id="regestration-number">Регистрационный №_____</span>
-                    <span class="text-small" id="text-bottom-right">
-                            Зачислить на ______ курс<br>
-                            Специальности___________<br>
-                            Приказ №_____ от "__"_______ 2017г.<br>
-                            Директор____________ Д.В.Шевченко
+            <div id="data-name-persona">
+                <div id="ot-FIO" class="block-data-name-persona">
+                    <span id="text-ot-FIO">от (ФИО) </span>
+                    <span id="span_text-ot-FIO"></span>
+                </div>
+                <div id="data-city-citizenship-data" class="block-data-name-persona">
+                    <span id="text-data-label">Дата рождения </span>
+                    <span id="text-data-placeholder" type="date" class="placeholder-text-data"></span>
+    
+                    <span id="text-city-label"> Место рождения </span>
+                    <span id="text-city-placeholder" class="placeholder-text-data"></span>
+    
+                    <span id="text-citizenship-label"> Гражданство </span>
+                    <span id="text-citizenship-placeholder" class="placeholder-text-data"></span>
+                </div>
+                <div id="document-identity-serial-number" class="block-data-name-persona">
+                    <span id="text-document-identity">Документ, удостоверяющий личность </span>
+                    <span id="placeholder-document-identity" class="placeholder-document-identity-serial-number">
+                            
                         </span>
-                </div><br>
-                <div id="line-top-text">
-                    <span class="text-big" id="text-line-top">
-                            Директору государственного автономного проффесионального<br>
-                            образовательного учреждения Свердловской области "Екатеринбургский колледж<br>
-                            транспортного строительства" Шевченко Денису Валерьевичу<br>
-                        </span>
+    
+                    <span id="text-serial">серия</span>
+                    <span id="placeholder-serial" placeholder="0000" class="placeholder-document-identity-serial-number"></span>
+    
+                    <span id="text-number">№</span>
+                    <span id="placeholder-number" placeholder="000000" class="placeholder-document-identity-serial-number"></span>
+                </div>
+                <div id="when-and-by-whom-issued" class="block-data-name-persona">
+                    <span id="text-when-and-by-whom-issued">Когда и кем выдан: </span>
+                    <span id="placeholder-when-and-by-whom-issued"></span>
+                </div>
+                <div id="Registration-address-(as-in-passport)" С>
+                    <span id="text-registration-address-(as-in-passport)">Адрес регистрации места жительства (по паспорту)</input>
+                        <span id="placeholder-registration-address-as-in-passport"></span>
+                </div>
+                <div id="the-actual-address" class="block-data-name-persona">
+                    <span id="text-the-actual-address">Адрес проживания (фактический)</span>
+                    <span id="placeholder-the-actual-address"></span>
+                </div>
+                <div id="index-cellphone-homephone" class="block-data-name-persona">
+                    <span id="text-index">индекс</span>
+                    <span id="placeholder-index" class="placeholder-index-cellphone-homephone"></span>
+    
+                    <span id="text-cellphone">сотовый тел.</span>
+                    <span id="placeholder-cellphone" type="tel" placeholder="+7(000)000-00-00" class="placeholder-index-cellphone-homephone"></span>
+    
+                    <span id="text-homephone">дом. телефон</span>
+                    <span id="placeholder-homephone" type="tel" placeholder="+7(000)000-00-00" class="placeholder-index-cellphone-homephone"></span>
+                </div>
+            </div>
+            <div id="statement">
+                <span class="statement_center">ЗАЯВЛЕНИЕ</span><br>
+                <span class="statement_bottom">Прошу зачислить меня в Государственное автономное проффесиональное образовательное учреждение Свердловской области "Екатеринбургский колледж транспортного строительства" на специальность</span><br>
+                <span id="specional"></span><br>
+                <span class="statement_bottom">базовой подготовик / учебной подготовки (нужное подчеркнуть) по очной форме обучения, на места, финансируемые из областного бюджета / за счет счет средст физических и (или) юридических лиц (по договору об образовании) (нужное подчеркнуть)</span>
+            </div>
+    
+            <div id="">
+                <span class="statement_center">О СЕБЕ СООБЩАЮ СЛЕДУЮЩЕЕ: </span><br>
+                <div>
+                    <span>1.Окончил (а) в </span>
+                    <span id="yers" type="date"></span>
+                    <span> году </span>
+                    <span id="name_school"></span>
+                    <span>(полное наименование учреждения)</span><br>
+                    <span>Документы об оброзовании и (или) квалификации серия </span>
+                    <span id="seria_document_school"></span>
+                    <span> № </span>
+                    <span id="number_document_school"></span>
+                </div>
+                <div>
+                    <span>2. Иностранный язык:</span>
+                    <span id="language"></span>
+                </div>
+                <div>
+                    <span>3. В общежитии </span>
+                    <span id="obchaga"></span>
+                </div>
+                <div>
+                    <span>4. Свединия о родителях: </span><br>
+                    <span>Отец (фио)</span>
+                    <span id="fio_faser"></span><br>
+    
+                    <span>Место работы</span>
+                    <span id="mesto_job_f"></span>
+    
+                    <span>Должность</span>
+                    <span id="doljnost_f"></span><br>
+    
+                    <span>Рабочий тел</span>
+                    <span id="tell_job_f"></span>
+    
+                    <span>сотовый телефон</span>
+                    <span id="tell_my_f"></span><br>
+    
+    
+                    <span>мать (фио)</span>
+                    <span id="fio_mazer"></span><br>
+    
+                    <span>Место работы</span>
+                    <span id="mesto_job_m"></span>
+    
+                    <span>Должность</span>
+                    <span id="doljnost_m"></span><br>
+    
+                    <span>Рабочий тел</span>
+                    <span id="tell_job_m"></span>
+    
+                    <span>сотовый телефон</span>
+                    <span id="tell_my_m"></span>
+                </div>
+                <div>
+                    <span>5. Служба в Российской Армии: </span>
+                    <span id="army"></span>
+                </div>
+                <div>
+                    <span>6. Иные сведения</span>
+                    <span id='dr_sv'></span>
+                </div>
+            </div>
+    
+            <div style="width: 100%">
+                <span style="font-weight: bold">К заявлению прилогаю следующие документы: </span><br>
+    
+                <div style="left: 50px" class="list_document">
+                    <span>1 Аттестат / диплом № </span><br>
+                    <span>2 Копия паспорта</span><br>
+                    <span>3 Фотографии (3*4)</span><br>
+                    <span>4 Копия свидетельства о результатах ЕГЭ / ГИА </span><br>
+                    <span>5 Копия прививочного сертификата</span><br>
+                    <span>6 Медецинская справка 086-у</span><br>
+                    <span>7 Копия медецинского полиса</span><br>
+                    <span>8 Копия страхового свидетельства</span><br>
+                    <span>9 Копия военного билета или приписного свидетельства</span><br>
+                    <span>10 Копия миграционной карты (для иностранных граждан)</span><br>
+                    <span>11 Отрывная часть бланка уведомления о прибытии в РФ (для иностранных граждан) </span><br>
+                    <span>12 Виза (для иностранных граждан)</span><br>
+                </div>
+                <div style="height: 185px" class="list_document">
+                    <span>(копия / оригинал)</span><br>
+                    <span>2 шт.</span><br>
+                    <span>6 шт.</span><br>
+                    <span>1 шт.</span><br>
+                    <span>1 шт.</span><br>
+                    <span>1 шт.</span><br>
+                    <span>1 шт.</span><br>
+                    <span>1 шт.</span><br>
+                    <span>1 шт.</span><br>
+                </div>
+            </div>
+    
+            <div id="signature_block">
+                <div id="signature"></div>
+                <span>(ФИО, подпись поступающего)</span>
+            </div>
+    
+            <div id="column">
+                <div class="column_text" id="column_text_1">
+                    Подтвердаю, что:
+                </div>
+                <div class="column_text" id="column_text_2">
+                    Подпись
                 </div>
             </div>
         </div>
-        <div id="data-name-persona">
-            <div id="ot-FIO" class="block-data-name-persona">
-                <span id="text-ot-FIO">от (ФИО) </span>
-                <span id="span_text-ot-FIO"></span>
-            </div>
-            <div id="data-city-citizenship-data" class="block-data-name-persona">
-                <span id="text-data-label">Дата рождения </span>
-                <span id="text-data-placeholder" type="date" class="placeholder-text-data"></span>
+        <div id="navigation">
+            <div id="print" class="navigations">Печать</div>
+            <div id="read" class="navigations">Редактировать</div>
+            <div id="delete" class="navigations">Удалить</div>
+            <div id="close" class="navigations">Закрыть</div>
+        </div>
+    </div>
+    
+    <div id="readApplicant">
+        <div class="input-new-applicant">
+            <span>от ФИО</span>
+            <input id="fio" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Дата рождения</span>
+            <input id="data-happi" class="input" type="date" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Место рождения</span>
+            <input id="place-of-birth" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Гражданство</span>
+            <input id="citizenship" class="input" type="text" />
+        </div>
 
-                <span id="text-city-label"> Место рождения </span>
-                <span id="text-city-placeholder" class="placeholder-text-data"></span>
-
-                <span id="text-citizenship-label"> Гражданство </span>
-                <span id="text-citizenship-placeholder" class="placeholder-text-data"></span>
-            </div>
-            <div id="document-identity-serial-number" class="block-data-name-persona">
-                <span id="text-document-identity">Документ, удостоверяющий личность </span>
-                <span id="placeholder-document-identity" class="placeholder-document-identity-serial-number">
+        <div class="input-new-applicant">
+            <span>Документы, удостоверяющий личность</span>
+            <input id="document" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Серия</span>
+            <input id="seria" class="input" maxlength="4" type="number" placeholder="----" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Номер</span>
+            <input id="number" class="input" maxlength="6" type="number" placeholder="------" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Когда и кем выдан паспорт</span>
+            <input id="issued" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Адрес регистрации(по паспорту)</span>
+            <input id="regestration-of-passport" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Адрес жительства</span>
+            <input id="adres-now" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Индекс</span>
+            <input id="index" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Сотовый тел.</span>
+            <input id="call-sot" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Домашний тел.</span>
+            <input id="call-houm" class="input" type="text" />
+        </div>
+        <div class="input-new-applicant">
+            <span>Выберите специальность</span>
+            <select id="spec" class="input">
                         
-                    </span>
-
-                <span id="text-serial">серия</span>
-                <span id="placeholder-serial" placeholder="0000" class="placeholder-document-identity-serial-number"></span>
-
-                <span id="text-number">№</span>
-                <span id="placeholder-number" placeholder="000000" class="placeholder-document-identity-serial-number"></span>
-            </div>
-            <div id="when-and-by-whom-issued" class="block-data-name-persona">
-                <span id="text-when-and-by-whom-issued">Когда и кем выдан: </span>
-                <span id="placeholder-when-and-by-whom-issued"></span>
-            </div>
-            <div id="Registration-address-(as-in-passport)" С>
-                <span id="text-registration-address-(as-in-passport)">Адрес регистрации места жительства (по паспорту)</input>
-                    <span id="placeholder-registration-address-as-in-passport"></span>
-            </div>
-            <div id="the-actual-address" class="block-data-name-persona">
-                <span id="text-the-actual-address">Адрес проживания (фактический)</span>
-                <span id="placeholder-the-actual-address"></span>
-            </div>
-            <div id="index-cellphone-homephone" class="block-data-name-persona">
-                <span id="text-index">индекс</span>
-                <span id="placeholder-index" class="placeholder-index-cellphone-homephone"></span>
-
-                <span id="text-cellphone">сотовый тел.</span>
-                <span id="placeholder-cellphone" type="tel" placeholder="+7(000)000-00-00" class="placeholder-index-cellphone-homephone"></span>
-
-                <span id="text-homephone">дом. телефон</span>
-                <span id="placeholder-homephone" type="tel" placeholder="+7(000)000-00-00" class="placeholder-index-cellphone-homephone"></span>
-            </div>
+            </select>
         </div>
-        <div id="statement">
-            <span class="statement_center">ЗАЯВЛЕНИЕ</span><br>
-            <span class="statement_bottom">Прошу зачислить меня в Государственное автономное проффесиональное образовательное учреждение Свердловской области "Екатеринбургский колледж транспортного строительства" на специальность</span><br>
-            <span id="specional"></span><br>
-            <span class="statement_bottom">базовой подготовик / учебной подготовки (нужное подчеркнуть) по очной форме обучения, на места, финансируемые из областного бюджета / за счет счет средст физических и (или) юридических лиц (по договору об образовании) (нужное подчеркнуть)</span>
+        <div class="input-new-applicant">
+            <span>Уровень подготовки</span>
+            <select id="level" class="input">
+                <option>Базовый</option>
+                <option>Углубленный</option>
+            </select>
         </div>
+        <div class="input-new-applicant">
+            <span>В общежитии</span>
+            <select id="obchaga" class="input">
+                <option>Нуждаюсь</option>
+                <option>Не нуждаюсь</option>
+            </select>
+        </div>
+        <div class="input-new-applicant">
+            <span>На место</span>
+            <select id="mesto-money" class="input">
+                <option>финансируемые из областного бюджета</option>
+                <option>за счет средств физических и (или) юридических лиц (по договору об образовании) </option>
+            </select>
+        </div>
+        <div class="input-new-applicant">
+            <span>Окончил(а) в</span>
+            <input type="date" class="input" id="end-shool-data" />
+            <span>году</span>
+            <input type="text" class="input" id="name-shool" />
+            <span>(полное наименование учреждения)</span>
+        </div>
+        <div class="input-new-applicant">
+            <span>Документ об образовании и (или) квалификации серия</span>
+            <input type="number" class="input" id="seriy-shool">
+            <span>номер</span>
+            <input type="number" class="input" id="number-shool">
+        </div>
+        <div class="input-new-applicant">
+            <span>Иностранный язык:</span>
+            <select id="language" class="input">
+                <option>английский</option>
+                <option>немецкий</option>
+                <option>французский</option>
+                <option>другой</option>
+                <option>не изучал</option>
+            </select>
+        </div>
+        <div class="input-new-applicant">
+            <span>Отец (ФИО)</span>
+            <input type="text" class="input" id="phaser-name">
 
-        <div id="">
-            <span class="statement_center">О СЕБЕ СООБЩАЮ СЛЕДУЮЩЕЕ: </span><br>
-            <div>
-                <span>1.Окончил (а) в </span>
-                <span id="yers" type="date"></span>
-                <span> году </span>
-                <span id="name_school"></span>
-                <span>(полное наименование учреждения)</span><br>
-                <span>Документы об оброзовании и (или) квалификации серия </span>
-                <span id="seria_document_school"></span>
-                <span> № </span>
-                <span id="number_document_school"></span>
-            </div>
-            <div>
-                <span>2. Иностранный язык: английский, немецкий, французкий, другое, не изучал (нужное подчеркнуть)</span>
-            </div>
-            <div>
-                <span>3. В общежитии нуждаюсь, не нуждаюсь (нужное подчеркнуть)</span>
-            </div>
-            <div>
-                <span>4. Свединия о родителях: </span><br>
-                <span>Отец (фио)</span>
-                <span id="fio_faser"></span><br>
+            <span>Место работы</span>
+            <input type="text" class="input" id="phaser-job">
 
-                <span>Место работы</span>
-                <span id="mesto_job_f"></span>
+            <span>Должность</span>
+            <input type="text" class="input" id="phaser-job-mesto">
 
-                <span>Должность</span>
-                <span id="doljnost_f"></span><br>
+            <span>Рабочий телефон</span>
+            <input type="tel" class="input" id="phaser-job-phone">
 
-                <span>Рабочий тел</span>
-                <span id="tell_job_f"></span>
+            <span>Сотовый телефон</span>
+            <input type="tel" class="input" id="phaser-mobile">
+        </div>
+        <div class="input-new-applicant">
+            <span>Мать (ФИО)</span>
+            <input type="text" class="input" id="mother-name">
 
-                <span>сотовый телефон</span>
-                <span id="tell_my_f"></span><br>
+            <span>Место работы</span>
+            <input type="text" class="input" id="mother-job">
 
+            <span>Должность</span>
+            <input type="text" class="input" id="mother-job-mesto">
 
-                <span>мать (фио)</span>
-                <span id="fio_mazer"></span><br>
+            <span>Рабочий телефон</span>
+            <input type="tel" class="input" id="mother-job-phone">
 
-                <span>Место работы</span>
-                <span id="mesto_job_m"></span>
-
-                <span>Должность</span>
-                <span id="doljnost_m"></span><br>
-
-                <span>Рабочий тел</span>
-                <span id="tell_job_m"></span>
-
-                <span>сотовый телефон</span>
-                <span id="tell_my_m"></span>
-            </div>
-            <div>
-                <span>5. Служба в Российской Армии: да / нет (нужное подчеркнуть)</span>
-            </div>
-            <div>
-                <span>6. Иные сведения</span>
-                <span id='dr_sv'></span>
-            </div>
+            <span>Сотовый телефон</span>
+            <input type="tel" class="input" id="mother-mobile">
+        </div>
+        <div class="input-new-applicant">
+            <span>Служба в армии</span>
+            <select id="army" class="input">
+                <option>Служил</option>
+                <option>Не служил</option>
+            </select>
+        </div>
+        <div class="input-new-applicant">
+            <span>Инные данные</span>
+            <input type="text" class="input" id="info">
         </div>
 
-        <div style="width: 100%">
-            <span style="font-weight: bold">К заявлению прилогаю следующие документы: </span><br>
-
-            <div style="left: 50px" class="list_document">
-                <span>1 Аттестат / диплом № </span><br>
-                <span>2 Копия паспорта</span><br>
-                <span>3 Фотографии (3*4)</span><br>
-                <span>4 Копия свидетельства о результатах ЕГЭ / ГИА </span><br>
-                <span>5 Копия прививочного сертификата</span><br>
-                <span>6 Медецинская справка 086-у</span><br>
-                <span>7 Копия медецинского полиса</span><br>
-                <span>8 Копия страхового свидетельства</span><br>
-                <span>9 Копия военного билета или приписного свидетельства</span><br>
-                <span>10 Копия миграционной карты (для иностранных граждан)</span><br>
-                <span>11 Отрывная часть бланка уведомления о прибытии в РФ (для иностранных граждан) </span><br>
-                <span>12 Виза (для иностранных граждан)</span><br>
-            </div>
-            <div style="height: 185px" class="list_document">
-                <span>(копия / оригинал)</span><br>
-                <span>2 шт.</span><br>
-                <span>6 шт.</span><br>
-                <span>1 шт.</span><br>
-                <span>1 шт.</span><br>
-                <span>1 шт.</span><br>
-                <span>1 шт.</span><br>
-                <span>1 шт.</span><br>
-                <span>1 шт.</span><br>
-            </div>
+        <div id="navigation">
+            <div id="saves" class="navigations">Закрыть</div>
+            <div id="close1" class="navigations">Закрыть</div>
         </div>
-
-        <div id="signature_block">
-            <div id="signature"></div>
-            <span>(ФИО, подпись поступающего)</span>
-        </div>
-
-        <div id="column">
-            <div class="column_text" id="column_text_1">
-                Подтвердаю, что:
-            </div>
-            <div class="column_text" id="column_text_2">
-                Подпись
-            </div>
-        </div>
+        
     </div>
-
-    <div id="navigation">
-        <div id="print" class="navigations">Печать</div>
-        <div id="read" class="navigations">Редактировать</div>
-        <div id="delete" class="navigations">Удалить</div>
-        <div id="close" class="navigations">Закрыть</div>
-    </div>
+    
+    <script src="dist/print.js"></script>
 </body>
 
 </html>

@@ -67,6 +67,18 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+module.exports = require("electron");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -146,7 +158,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -202,7 +214,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(2);
+var	fixUrls = __webpack_require__(4);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -518,7 +530,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports) {
 
 
@@ -613,18 +625,6 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("electron");
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
 /* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -632,9 +632,9 @@ module.exports = require("fs");
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_user_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_user_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_fs__);
 
 
@@ -644,8 +644,14 @@ __WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].on('data', (event, arg) =>
 __WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].send(['users', 'spec', 'applicant']);
 
 const login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json')).login;
-window.specArray = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/spec.json')).spec;
 window.bazaApplicants = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/applicant.json'));
+window.specArray = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/spec.json')).spec;
+
+window.resetFile = function () {
+    const login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json')).login;
+    window.bazaApplicants = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/applicant.json'));
+    window.specArray = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/spec.json')).spec;
+};
 
 window.onload = () => {
     var enter = document.getElementsByClassName('enter-autorization')[0];
@@ -656,7 +662,6 @@ window.onload = () => {
         for (var i = 0; i != login.length; i++) {
             if (name.value == login[i].login && password.value == login[i].password) {
                 alert('Вы вошли');
-                console.log(bazaApplicants);
                 document.getElementById('user').style.display = "none";
                 document.getElementById('window-menu').style.display = "block";
             } else {
@@ -681,7 +686,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
+var update = __webpack_require__(3)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -701,12 +706,12 @@ if(false) {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(0)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
 // module
-exports.push([module.i, "body{\r\n    margin: 0;\r\n    background: white;\r\n    font-size: 18px;\r\n}\r\n#user{\r\n    width: 500px;\r\n    height: 350px;\r\n    background: lightskyblue;\r\n    margin: 10% auto;\r\n    border-radius: 40px;\r\n    border: 15px solid gainsboro;\r\n    font-family: monospace;\r\n}\r\n.top-line-autorization{\r\n    width: 90%;\r\n    margin: 10px auto;\r\n    height: 40px;\r\n    font-size: 40px;\r\n    color: white;\r\n}\r\n.body-autorization{\r\n    width: 90%;\r\n    height: calc(100% - 160px);\r\n    margin: 10px auto;\r\n    font-size: 28px;\r\n}\r\n.login{\r\n    font-size: 21px;\r\n    width: 100%;\r\n}\r\n.enter-autorization{\r\n    width: 50%;\r\n    height: 15%;\r\n    background: lightblue;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    border: 1px solid cadetblue;\r\n    cursor: pointer;\r\n    font-size: 30px;\r\n    line-height: 50px;\r\n    text-align: center;\r\n}", ""]);
+exports.push([module.i, "body{\n    margin: 0;\n    background: white;\n    font-size: 18px;\n}\n#user{\n    width: 500px;\n    height: 350px;\n    background: lightskyblue;\n    margin: 10% auto;\n    border-radius: 40px;\n    border: 15px solid gainsboro;\n    font-family: monospace;\n}\n.top-line-autorization{\n    width: 90%;\n    margin: 10px auto;\n    height: 40px;\n    font-size: 40px;\n    color: white;\n}\n.body-autorization{\n    width: 90%;\n    height: calc(100% - 160px);\n    margin: 10px auto;\n    font-size: 28px;\n}\n.login{\n    font-size: 21px;\n    width: 100%;\n}\n.enter-autorization{\n    width: 50%;\n    height: 15%;\n    background: lightblue;\n    margin: 0 auto;\n    border-radius: 5px;\n    border: 1px solid cadetblue;\n    cursor: pointer;\n    font-size: 30px;\n    line-height: 50px;\n    text-align: center;\n}", ""]);
 
 // exports
 

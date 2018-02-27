@@ -67,6 +67,18 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+module.exports = require("electron");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -146,7 +158,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -202,7 +214,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(2);
+var	fixUrls = __webpack_require__(4);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -518,7 +530,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports) {
 
 
@@ -613,13 +625,6 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("electron");
-
-/***/ }),
-/* 4 */,
 /* 5 */,
 /* 6 */,
 /* 7 */,
@@ -630,8 +635,11 @@ module.exports = require("electron");
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__styles_window_menu_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_fs__);
+
 
 
 
@@ -646,6 +654,7 @@ var hello = document.getElementById('hello');
 var applicant = document.getElementById('applicants');
 var show = document.getElementById('modal-password');
 var accept = document.getElementById('enter-password-modal');
+var reset = document.getElementById('cog');
 
 setTimeout(function () {
     hello.style.display = "none";
@@ -697,6 +706,8 @@ settingB.onclick = () => {
 };
 
 window.enterBlockSpec = () => {
+    resetFile();
+    let bazaApplicants = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/applicant.json'));
     let nameSpec = document.getElementById(indexNumber).innerText.split(' ')[0];
     let massSpec = [];
 
@@ -719,6 +730,7 @@ window.enterBlockSpec = () => {
             lineApplcantToSpec.onclick = function () {
                 window.lineApplcantToSpecNumber = massSpec[i];
                 clickToApplicantNumber();
+                creatModalWindow();
             };
 
             lineApplcantToSpec.className = 'lineApplcant';
@@ -738,6 +750,7 @@ window.enterBlockSpec = () => {
 };
 
 var namePoisk = function () {
+    resetFile();
     let key = 0;
     let indexApplicant = [];
     let name = document.getElementById('poiskNameIn').value.split(' ');
@@ -770,6 +783,7 @@ var namePoisk = function () {
 
             lineApplcant.onclick = function () {
                 window.lineApplcantToSpecNumber = e;
+                creatModalWindow();
                 clickToApplicantNumber();
             };
 
@@ -795,6 +809,7 @@ var namePoisk = function () {
 };
 
 var creatSpec = function () {
+    resetFile();
     applicant.innerHTML = "";
     specArray.forEach(function (e, i) {
         var block = document.createElement('div');
@@ -817,6 +832,7 @@ var creatSpec = function () {
 };
 
 var backToSpec = function () {
+    resetFile();
     let backMenu = document.createElement('div');
     backMenu.innerText = "Вернуться в меню";
     backMenu.id = 'backMenu';
@@ -827,8 +843,34 @@ var backToSpec = function () {
 };
 
 var clickToApplicantNumber = function () {
-    alert(lineApplcantToSpecNumber);
-    __WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].send('formToApplicant');
+    resetFile();
+    document.getElementById("pause").style.display = "block";
+    document.getElementById('window-menu').style.opacity = 0.2;
+
+    let numApp = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json'));
+    numApp.sp.splice(0, 1);
+    numApp.sp.push({ "num": lineApplcantToSpecNumber });
+
+    Object(__WEBPACK_IMPORTED_MODULE_2_fs__["writeFile"])('./src/data/login.json', JSON.stringify(numApp, null, '\t'));
+    setTimeout(function () {
+        __WEBPACK_IMPORTED_MODULE_1_electron__["ipcRenderer"].send('formToApplicant');
+        document.getElementById("pause").style.display = "none";
+        document.getElementById('window-menu').style.opacity = 1;
+        creatModalWindow();
+    }, 3000);
+};
+
+var creatModalWindow = function () {
+    resetFile();
+    document.getElementById('window-menu').style.opacity = 0.2;
+    document.getElementById('modalResetWindow').style.display = "block";
+};
+
+reset.onclick = function () {
+    resetFile();
+    creatSpec();
+    document.getElementById('window-menu').style.opacity = 1;
+    document.getElementById('modalResetWindow').style.display = "none";
 };
 
 /***/ }),
@@ -846,7 +888,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(1)(content, options);
+var update = __webpack_require__(3)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -866,12 +908,12 @@ if(false) {
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(0)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
 // module
-exports.push([module.i, "::-webkit-scrollbar {\r\n    width: 0px;\r\n}\r\n\r\n#window-menu {\r\n    width: 100%;\r\n    height: 100%;\r\n    background: lightskyblue;\r\n    display: none;\r\n    overflow: hidden;\r\n}\r\n\r\n#left-window-menu {\r\n    width: 10px;\r\n    height: 100%;\r\n    margin-top: 90px;\r\n    display: inline-block;\r\n}\r\n\r\n.central-window-menu {\r\n    width: 98%;\r\n    height: 100%;\r\n    margin: 10px auto;\r\n    display: inline-block;\r\n    float: right;\r\n    margin-top: 10px;\r\n    overflow: auto;\r\n}\r\n\r\n#left-window-menu:hover .buttons-navigation {\r\n    display: inline-block;\r\n}\r\n\r\n#spec {\r\n    width: 100%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n\r\n.menu {\r\n    display: none;\r\n    background: whitesmoke;\r\n    width: 98%;\r\n    border: 1px solid black;\r\n    overflow: scroll;\r\n    height: 90%;\r\n    border-radius: 5px;\r\n    padding: 10px;\r\n}\r\n\r\n.input-new-applicant {\r\n    display: block;\r\n    margin-top: 15px;\r\n}\r\n\r\n.input-new-applicant input {\r\n    width: 100%;\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n.input-new-applicant span {\r\n    font-size: 21px;\r\n    font-family: monospace;\r\n}\r\n\r\n#hello {\r\n    position: absolute;\r\n    background: whitesmoke;\r\n    width: 50%;\r\n    height: 120px;\r\n    text-align: center;\r\n    display: block;\r\n    margin: 20% 25%;\r\n    font-size: 26px;\r\n    border: 1px solid;\r\n    line-height: 50px;\r\n}\r\n\r\n.buttons-navigation {\r\n    width: 20px;\r\n    height: 160px;\r\n    display: none;\r\n    background: white;\r\n    cursor: pointer;\r\n    writing-mode: vertical-lr;\r\n    text-align: -webkit-center;\r\n    font-size: 21px;\r\n    border: 1px solid;\r\n    border-radius: 0 5px 5px 0;\r\n}\r\n\r\n.buttons-navigation:hover {\r\n    width: 60px;\r\n    line-height: 60px;\r\n    background: whitesmoke;\r\n    border: 2px solid;\r\n}\r\n\r\n#creatApplicant {\r\n    display: none;\r\n    background: white;\r\n    border: 1px solid;\r\n    overflow: auto;\r\n}\r\n\r\n.blockSpecka {\r\n    width: 100%;\r\n    margin: 15px auto;\r\n    background: mintcream;\r\n    border: 1px solid black;\r\n    font-size: 30px;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n}\r\n\r\n.blockApplicantsShow {\r\n    width: 95%;\r\n    border-radius: 0 0 5px 5px;\r\n    border: 1px solid;\r\n    margin: 0 auto;\r\n    display: table-caption;\r\n}\r\n\r\n#sorted {\r\n    width: 100%;\r\n    margin-top: -10px;\r\n    height: 40px;\r\n    font-size: 21px;\r\n}\r\n\r\n#poiskNameIN {\r\n    width: 90.8%;\r\n    font-size: 21px;\r\n    margin-top: 5px;\r\n}\r\n\r\n#namePoisk {\r\n    width: 60px;\r\n    height: 30px;\r\n    border: 1px solid black;\r\n    border-radius: 5px;\r\n    background: grey;\r\n    opacity: 0.5;\r\n    display: inline-flex;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}\r\n\r\n#add-applicant {\r\n    width: 80%;\r\n    height: 50px;\r\n    border: 1px solid;\r\n    background: lightgrey;\r\n    font-size: 30px;\r\n    text-align: center;\r\n    font-family: monospace;\r\n    margin: 20px auto 20px;\r\n    line-height: 50px;\r\n    cursor: pointer;\r\n}\r\n\r\n#modal-password {\r\n    display: none;\r\n    margin: 15% 35%;\r\n    position: fixed;\r\n    text-align: center;\r\n    font-size: 35px;\r\n    width: 500px;\r\n    height: 180px;\r\n    background: lightskyblue;\r\n    border-radius: 40px;\r\n    border: 15px solid gainsboro;\r\n    font-family: monospace;\r\n}\r\n\r\n#enter-password-modal {\r\n    width: 50%;\r\n    height: 50px;\r\n    border: 1px solid;\r\n    background: lightgrey;\r\n    margin: 35px auto;\r\n    cursor: pointer;\r\n}\r\n\r\n#password-modal {\r\n    width: 80%;\r\n    font-family: monospace;\r\n    font-size: 21px;\r\n}\r\n\r\n.lineApplcant {\r\n    width: 80%;\r\n    height: auto;\r\n    min-height: 50px;\r\n    text-align: center;\r\n    margin: 20px auto;\r\n    background: skyblue;\r\n    line-height: 50px;\r\n    font-size: 25px;\r\n    font-family: monospace;\r\n    border: 1px solid;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n.spanApplicansPoisk {\r\n    margin: 20px;\r\n    color: black;\r\n}\r\n\r\n#backMenu {\r\n    width: 100%;\r\n    text-align: center;\r\n    font-family: monospace;\r\n    font-size: 20px;\r\n    height: 20px;\r\n    cursor: pointer;\r\n}", ""]);
+exports.push([module.i, "::-webkit-scrollbar {\n    width: 0px;\n}\n\n#window-menu {\n    width: 100%;\n    height: 100%;\n    background: lightskyblue;\n    display: none;\n    overflow: hidden;\n    z-index: 1;\n}\n\n#left-window-menu {\n    width: 10px;\n    height: 100%;\n    margin-top: 90px;\n    display: inline-block;\n}\n\n.central-window-menu {\n    width: 98%;\n    height: 100%;\n    margin: 10px auto;\n    display: inline-block;\n    float: right;\n    margin-top: 10px;\n    overflow: auto;\n}\n\n#left-window-menu:hover .buttons-navigation {\n    display: inline-block;\n}\n\n#spec {\n    width: 100%;\n    font-family: monospace;\n    font-size: 21px;\n}\n\n.menu {\n    display: none;\n    background: whitesmoke;\n    width: 98%;\n    border: 1px solid black;\n    overflow: scroll;\n    height: 90%;\n    border-radius: 5px;\n    padding: 10px;\n}\n\n.input-new-applicant {\n    display: block;\n    margin-top: 15px;\n}\n\n.input-new-applicant input {\n    width: 100%;\n    font-size: 21px;\n    font-family: monospace;\n}\n\n.input-new-applicant span {\n    font-size: 21px;\n    font-family: monospace;\n}\n\n#hello {\n    position: absolute;\n    background: whitesmoke;\n    width: 50%;\n    height: 120px;\n    text-align: center;\n    display: block;\n    margin: 20% 25%;\n    font-size: 26px;\n    border: 1px solid;\n    line-height: 50px;\n}\n\n.buttons-navigation {\n    width: 20px;\n    height: 160px;\n    display: none;\n    background: white;\n    cursor: pointer;\n    writing-mode: vertical-lr;\n    text-align: -webkit-center;\n    font-size: 21px;\n    border: 1px solid;\n    border-radius: 0 5px 5px 0;\n}\n\n.buttons-navigation:hover {\n    width: 60px;\n    line-height: 60px;\n    background: whitesmoke;\n    border: 2px solid;\n}\n\n#creatApplicant {\n    display: none;\n    background: white;\n    border: 1px solid;\n    overflow: auto;\n}\n\n.blockSpecka {\n    width: 100%;\n    margin: 15px auto;\n    background: mintcream;\n    border: 1px solid black;\n    font-size: 30px;\n    cursor: pointer;\n    border-radius: 5px;\n}\n\n.blockApplicantsShow {\n    width: 95%;\n    border-radius: 0 0 5px 5px;\n    border: 1px solid;\n    margin: 0 auto;\n    display: table-caption;\n}\n\n#sorted {\n    width: 100%;\n    margin-top: -10px;\n    height: 40px;\n    font-size: 21px;\n}\n\n#poiskNameIN {\n    width: 90.8%;\n    font-size: 21px;\n    margin-top: 5px;\n}\n\n#namePoisk {\n    width: 60px;\n    height: 30px;\n    border: 1px solid black;\n    border-radius: 5px;\n    background: grey;\n    opacity: 0.5;\n    display: inline-flex;\n    text-align: center;\n    cursor: pointer;\n}\n\n#add-applicant {\n    width: 80%;\n    height: 50px;\n    border: 1px solid;\n    background: lightgrey;\n    font-size: 30px;\n    text-align: center;\n    font-family: monospace;\n    margin: 20px auto 20px;\n    line-height: 50px;\n    cursor: pointer;\n}\n\n#modal-password {\n    display: none;\n    margin: 15% 35%;\n    position: fixed;\n    text-align: center;\n    font-size: 35px;\n    width: 500px;\n    height: 180px;\n    background: lightskyblue;\n    border-radius: 40px;\n    border: 15px solid gainsboro;\n    font-family: monospace;\n    z-index: 2;\n}\n\n#enter-password-modal {\n    width: 50%;\n    height: 50px;\n    border: 1px solid;\n    background: lightgrey;\n    margin: 35px auto;\n    cursor: pointer;\n}\n\n#password-modal {\n    width: 80%;\n    font-family: monospace;\n    font-size: 21px;\n}\n\n.lineApplcant {\n    width: 80%;\n    height: auto;\n    min-height: 50px;\n    text-align: center;\n    margin: 20px auto;\n    background: skyblue;\n    line-height: 50px;\n    font-size: 25px;\n    font-family: monospace;\n    border: 1px solid;\n    border-radius: 5px;\n    cursor: pointer;\n}\n\n.spanApplicansPoisk {\n    margin: 20px;\n    color: black;\n}\n\n#backMenu {\n    width: 100%;\n    text-align: center;\n    font-family: monospace;\n    font-size: 20px;\n    height: 20px;\n    cursor: pointer;\n}\n.modalWindow{\n    width: 400px;\n    height: 130px;\n    background: lightblue;\n    font-size: 30px;\n    text-align: center;\n    border: 2px solid;\n    border-radius: 5px;\n    margin: 20% 35%;\n    position: fixed;\n    line-height: 70px;\n    font-family: monospace;\n    cursor: context-menu;\n    z-index: 2;\n    display: none;\n}\n.modalWindow1{\n    width: 400px;\n    height: 130px;\n    font-size: 30px;\n    text-align: center;\n    border-radius: 5px;\n    margin: 20% 35%;\n    position: fixed;\n    line-height: 70px;\n    font-family: monospace;\n    cursor: context-menu;\n    z-index: 2;\n    display: none;\n}\n.modalResetBlock:hover {\n    cursor: pointer;\n    -webkit-animation-name: cog;\n    -webkit-animation-duration: 5s;\n    -webkit-animation-iteration-count: infinite;\n    -webkit-animation-timing-function: linear;\n   \n    animation-name: cog;\n    animation-duration: 5s;\n    animation-iteration-count: infinite;\n    animation-timing-function: linear;\n  }\n  @-ms-keyframes cog {\n    from { -ms-transform: rotate(0deg); }\n    to { -ms-transform: rotate(360deg); }\n  }\n  @-moz-keyframes cog {\n    from { -moz-transform: rotate(0deg); }\n    to { -moz-transform: rotate(360deg); }\n  }\n  @-webkit-keyframes cog {\n    from { -webkit-transform: rotate(0deg); }\n    to { -webkit-transform: rotate(360deg); }\n  }\n  @keyframes cog {\n    from {\n      transform:rotate(0deg);\n    }\n    to {\n      transform:rotate(360deg);\n    }\n  }\n\n\n  .modalPauseWIndow {\n    cursor: pointer;\n    -webkit-animation-name: cof;\n    -webkit-animation-duration: 5s;\n    -webkit-animation-iteration-count: infinite;\n    -webkit-animation-timing-function: linear;\n   \n    animation-name: cof;\n    animation-duration: 5s;\n    animation-iteration-count: infinite;\n    animation-timing-function: linear;\n  }\n  @-ms-keyframes cof {\n    from { -ms-transform: rotate(0deg); }\n    to { -ms-transform: rotate(360deg); }\n  }\n  @-moz-keyframes cof {\n    from { -moz-transform: rotate(0deg); }\n    to { -moz-transform: rotate(360deg); }\n  }\n  @-webkit-keyframes cof {\n    from { -webkit-transform: rotate(0deg); }\n    to { -webkit-transform: rotate(360deg); }\n  }\n  @keyframes cof {\n    from {\n      transform:rotate(0deg);\n    }\n    to {\n      transform:rotate(360deg);\n    }\n  }", ""]);
 
 // exports
 
