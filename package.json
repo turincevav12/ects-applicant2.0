@@ -1,7 +1,6 @@
 {
   "name": "ects-applicant",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "run": "electron .",
@@ -19,5 +18,14 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "shell": "^0.5.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turincevav12/ects-applicant2.0.git"
+  },
+  "bugs": {
+    "url": "https://github.com/turincevav12/ects-applicant2.0/issues"
+  },
+  "homepage": "https://github.com/turincevav12/ects-applicant2.0#readme",
+  "description": ""
 }

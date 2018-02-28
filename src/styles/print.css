@@ -52,9 +52,11 @@ body {
 }
 
 #bottom {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     height: 150px;
+    text-align: center;
 }
 
 #image {
@@ -64,8 +66,9 @@ body {
 }
 
 #text-bottom {
-    flex-grow: 1;
+    width: 100%;
     margin-left: 10px;
+    text-align: center;
 }
 
 #regestration-number {}

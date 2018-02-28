@@ -1,11 +1,13 @@
 const electron = require('electron');
 const path = require('path');
 const webContents = require('electron');
+const fs = require('fs')
 
 const app = electron.app;
 const globalShortcut = electron.globalShortcut;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
+
 
 const users = require('./src/data/login.json')
 const spec = require('./src/data/spec.json')
@@ -56,7 +58,14 @@ app.on('ready', function() {
         formToApplicant.show();
     })
     ipcMain.on('closeFormToApplicant', (event, data) => {
-        formToApplicant.close();
+        formToApplicant.webContents.printToPDF({}, (error, data) => {
+            if (error) throw error
+            fs.writeFile('print.pdf', data, (error) => {
+              if (error) throw error
+              console.log('Write PDF successfully.')
+            })
+          })
+        //formToApplicant.close();
         require('electron').shell.openExternal('form-print.html')
     }) 
 
