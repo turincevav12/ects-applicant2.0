@@ -2,237 +2,96 @@
     width: 0px;
 }
 
-html {
-    margin: 0;
+html, body{
+    width: 100%;
+    display: block;
     font-size: 12px;
-}
-
-
-body {
-    width: 100%;
     margin: 0;
 }
-
-.text-big {
-    font-weight: bold;
+.spanApplicant{
+    min-width: 25%;
 }
-
-.placeholder-text-data {
-    width: 5%;
-    border-bottom: 1px black;
-    flex-grow: 12;
-    margin-left: 20px;
-    margin-right: 10px;
-}
-
-.placeholder-document-identity-serial-number {
-    width: 5%;
-    flex-grow: 12;
-    margin-left: 20px;
-    margin-right: 10px;
-}
-
-.placeholder-index-cellphone-homephone {
-    width: 5%;
-    flex-grow: 12;
-    margin-left: 20px;
-    margin-right: 10px;
-}
-
-.block-data-name-persona {
-    margin: 2px 0 2px 0;
-}
-
-#placeholder-the-actual-address {
-    width: 79%;
-}
-
-#data-city-citizenship-data {
-    display: flex;
-}
-
-#bottom {
+#topLine{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    height: 150px;
-    text-align: center;
-}
-
-#image {
-    width: 150px;
-    height: 100%;
-    box-shadow: 0 0 5px black;
-}
-
-#text-bottom {
-    width: 100%;
-    margin-left: 10px;
-    text-align: center;
-}
-
-#regestration-number {}
-
-#text-bottom-right {
-    text-align: right;
-}
-
-#line-top-text {
-    width: 100%;
-    height: 20px;
-    text-align: center;
+    height: 140px;
+    display: -webkit-inline-box;
     font-size: 14px;
 }
-
-#line-bottom-text {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-#data-name-persona {
-    margin-top: 5px;
-}
-
-#text-data-placeholder {
-    flex-grow: 4;
-}
-
-#document-identity-serial-number {
-    display: flex;
-}
-
-#placeholder-when-and-by-whom-issued {
-    width: 87.7%;
-}
-
-#index-cellphone-homephone {
-    display: flex;
-}
-
-#input_text-ot-FIO {
-    width: 93.5%;
-    margin-left: 5px;
-}
-
-#placeholder-registration-address-as-in-passport {
-    width: 68.7%;
-}
-
-#statement {
-    display: grid;
-}
-
-.statement_center {
-    font-size: 16px;
-    margin: 10px auto;
-    font-weight: bold;
-}
-
-#specional {
+#topLineText{
     width: 100%;
 }
-
-.statement_bottom {
-    font-weight: bold;
-}
-
-.list_document {
-    width: 49%;
-    height: 250px;
-    text-align: left;
-    display: inline-table;
-}
-
-#signature {
-    width: 80%;
-    background: gray;
-    height: 15px;
-    display: inline-flex;
-    border-bottom: 2px solid;
-}
-
-#column {
-    display: flex;
-}
-
-#column_text_1 {
-    width: 85%;
-}
-
-#column_text_2 {
-    width: 10%;
-}
-
-#statement {
-    text-align: center;
-}
-
-.statement_center {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#name_school {
-    width: 73.8%;
-}
-
-#fio_faser {
-    width: 93%;
-}
-
-#mesto_job_f {
-    width: 33.9%;
-}
-
-#doljnost_f {
-    width: 50%;
-}
-
-#fio_mazer {
-    width: 93.3%;
-}
-
-#mesto_job_m {
-    width: 33.9%;
-}
-
-#doljnost_m {
-    width: 50%;
-}
-
-#dr_sv {
-    width: 89.2%;
-}
-
-#selectApplicant {
-    display: none;
-    position: fixed;
-}
-#navigation{
-    width: 105%;
-    font-family: monospace;
-    font-size: 21px;
-    display: inline-block;
+#image{
+    width: 30mm;
+    height: 35mm;
     border: 1px solid;
 }
-.navigations{
-    width: auto;
+#stock{
+    width: 100%;
+    display: inline-block;
+}
+#regestration{
+    display: inline-block;
+}
+#kurs{
+    display: inline-block;
+    float: right;
+}
+
+#derector{
+    margin-top: 10px;
     text-align: center;
-    margin: 0 10px 0 10px;
-    cursor: pointer;
 }
-.navigations:hover{
-    color: brown;
-    background: lightgrey;
+
+#dataApplicant{
+    width: 100%;
 }
-#showApplicant{
-    display: block;
-    
+.sevenLine{
+    width: 120%;
+    display: inline-block;
+    margin: 5px 0 5px 0;
 }
+#line2{
+    display: flex;
+}
+.spanApplicant1{
+    flex-grow: 4;
+}
+#kyda{
+    width: 120%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+#osebe{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 120%;
+}
+#rospis{
+    border-bottom: 1px solid;
+    width: 80%;
+    height: 15px;
+    display: inline-block;
+}
+TD.leftcol{
+    width: 100%;
+    border: 1px solid;
+}
+TD.rightcol{
+    width: 30%;
+    border: 1px solid;
+}
+#time{
+    float: right;
+}
+#pospisSotr{
+    border: 1px solid;
+    width: 300px;
+    display: inline-block;
+}
+
+
 #readApplicant{
-    display: block;
-    background: whitesmoke;
-    padding: 10px;
     display: none;
 }
