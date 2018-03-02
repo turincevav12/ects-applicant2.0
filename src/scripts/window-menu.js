@@ -36,9 +36,11 @@ newApplicantB.onclick = () => {
 
 bazaApplicantsB.onclick = () => {
     show.style.display = 'block'
+    document.getElementById('window-menu').style.opacity = 0.5
     accept.onclick = () => {
         var passwordModal = document.getElementById('password-modal').value
         if (passwordModal == '1') {
+            document.getElementById('window-menu').style.opacity = 1
             show.style.display = 'none'
 
             applicant.innerHTML = ''
@@ -83,6 +85,9 @@ window.enterBlockSpec = () => {
         applicant.innerHTML = ""
 
         backToSpec()
+        
+        //сюда код для сортировки
+
 
         for (let i = 0; i != massSpec.length; i++) {
             let lineApplcantToSpec = document.createElement('div')
@@ -136,6 +141,7 @@ var namePoisk = function() {
         applicant.innerHTML = ""
 
         backToSpec()
+
 
         indexApplicant.forEach(function(e) {
             let lineApplcant = document.createElement('div')
@@ -213,7 +219,6 @@ var clickToApplicantNumber = function() {
     resetFile()
     document.getElementById("pause").style.display = "block"   
     document.getElementById('window-menu').style.opacity = 0.2
-
     let numApp = JSON.parse(readFileSync('./src/data/login.json'));
     numApp.sp.splice(0,1)
     numApp.sp.push({"num":lineApplcantToSpecNumber})
@@ -238,4 +243,14 @@ reset.onclick = function(){
     creatSpec()
     document.getElementById('window-menu').style.opacity = 1
     document.getElementById('modalResetWindow').style.display = "none"
+}
+
+var sortApplicantPoBall = function(){
+    let top = document.createElement('div')
+    let bottom  = document.createElement('div')
+
+    this.top.className = 'sort'
+    this.bottom.className = 'sort'
+
+    
 }

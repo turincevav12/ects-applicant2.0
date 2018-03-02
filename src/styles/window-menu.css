@@ -183,6 +183,7 @@
     background: lightgrey;
     margin: 35px auto;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 #password-modal {

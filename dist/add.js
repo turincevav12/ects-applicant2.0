@@ -101,7 +101,6 @@ var add = document.getElementById('add-applicant');
 add.onclick = () => {
     let inputs = document.getElementsByClassName('input');
     console.log(inputs.length);
-
     let i = 0;
 
     for (var j = 0; j != inputs.length; j++) {
@@ -114,6 +113,16 @@ add.onclick = () => {
     }
     if (i == inputs.length) {
         alert('Начало записи, ожидайте');
+        var balls = document.getElementById('ball').value.split(" ");
+        var mass = 0;
+        if (ball.length != 1) {
+            balls.forEach(function (e) {
+                mass = mass + parseFloat.e;
+            });
+            balls = mass;
+        } else {
+            var ball = parseFloat(balls[0]);
+        }
 
         bazaApplicants.push({
             "fio": document.getElementById('fio').value,
@@ -149,7 +158,8 @@ add.onclick = () => {
             "motherjobphone": document.getElementById('mother-job-phone').value,
             "mothermobile": document.getElementById('mother-mobile').value,
             "army": document.getElementById('army').value,
-            "info": document.getElementById('info').value
+            "info": document.getElementById('info').value,
+            "ball": ball
         });
         Object(__WEBPACK_IMPORTED_MODULE_1_fs__["writeFile"])('./src/data/applicant.json', JSON.stringify(bazaApplicants, null, '\t'), err => {
             if (err) throw err;else {
