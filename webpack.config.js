@@ -8,7 +8,8 @@ module.exports = {
     user: dr('src/scripts/user'),
     window: dr('src/scripts/window-menu'),
     add: dr('src/scripts/add'),
-    print: dr('src/scripts/print')
+    print: dr('src/scripts/print'),
+    sett: dr('src/scripts/setting')
   },
 
   output: {

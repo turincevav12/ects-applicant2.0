@@ -76,6 +76,7 @@
     font-size: 26px;
     border: 1px solid;
     line-height: 50px;
+    border-radius: 5px;
 }
 
 .buttons-navigation {
@@ -315,4 +316,19 @@
     to {
       transform:rotate(360deg);
     }
+  }
+
+  select{
+    width: 100%;
+    font-family: monospace;
+    font-size: 21px;
+  }
+  #lineSorted{
+    width: 100%;
+    display: inline-flex;
+    margin: 0 40%;
+  }
+  .sort{
+    margin: 0 10px 0 10px;
+    cursor: pointer;
   }

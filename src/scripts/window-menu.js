@@ -16,10 +16,12 @@ var accept = document.getElementById('enter-password-modal')
 var reset = document.getElementById('cog')
 
 
+window.closeHello = function(){
+    setTimeout(function() {
+        hello.style.display = "none"
+    }, 4000);
+}
 
-setTimeout(function() {
-    hello.style.display = "none"
-}, 100);
 
 newApplicantB.onclick = () => {
     creatApplicant.style.display = 'inline-block'
@@ -34,12 +36,12 @@ newApplicantB.onclick = () => {
     })
 }
 
-bazaApplicantsB.onclick = () => {
+bazaApplicantsB.onclick = (e) => {
     show.style.display = 'block'
     document.getElementById('window-menu').style.opacity = 0.5
     accept.onclick = () => {
         var passwordModal = document.getElementById('password-modal').value
-        if (passwordModal == '1') {
+        if (passwordModal == pass) {
             document.getElementById('window-menu').style.opacity = 1
             show.style.display = 'none'
 
@@ -61,16 +63,13 @@ bazaApplicantsB.onclick = () => {
 }
 
 settingB.onclick = () => {
-    show.style.display = 'block'
-
-
+    
     creatApplicant.style.display = 'none'
     bazaApplicant.style.display = 'none'
     setting.style.display = 'inline-block'
 }
 
 window.enterBlockSpec = () => {
-    resetFile()
     let bazaApplicants = JSON.parse(readFileSync('./src/data/applicant.json'));
     let nameSpec = ((document.getElementById(indexNumber).innerText).split(' '))[0]
     let massSpec = []
@@ -81,34 +80,40 @@ window.enterBlockSpec = () => {
             massSpec.push(i)
         }
     }
+    window.specMass = massSpec
     if (massSpec.length != 0) {
         applicant.innerHTML = ""
 
         backToSpec()
         
-        //сюда код для сортировки
+        sortApplicantPoBall()
 
 
         for (let i = 0; i != massSpec.length; i++) {
             let lineApplcantToSpec = document.createElement('div')
             let spanFioToSpec = document.createElement('span')
             let yearToSpec = document.createElement('span')
+            let ball = document.createElement('span')
 
             lineApplcantToSpec.onclick = function() {
                 window.lineApplcantToSpecNumber = massSpec[i]
+
                 clickToApplicantNumber()
-                creatModalWindow()
             }
 
             lineApplcantToSpec.className = 'lineApplcant'
+            lineApplcantToSpec.id =  massSpec[i]
             spanFioToSpec.className = 'spanApplicansPoisk'
             yearToSpec.className = 'spanApplicansPoisk'
+            ball.className = 'spanApplicansPoisk'
 
             spanFioToSpec.innerText = bazaApplicants[massSpec[i]].fio
             yearToSpec.innerText = bazaApplicants[massSpec[i]].dataHappi
+            ball.innerText = "ср. балл = " + bazaApplicants[massSpec[i]].ball
 
             lineApplcantToSpec.appendChild(spanFioToSpec)
             lineApplcantToSpec.appendChild(yearToSpec)
+            lineApplcantToSpec.appendChild(ball)
             applicants.appendChild(lineApplcantToSpec)
         }
     } else {
@@ -118,7 +123,6 @@ window.enterBlockSpec = () => {
 }
 
 var namePoisk = function() {
-    resetFile()
     let key = 0
     let indexApplicant = []
     let name = (document.getElementById('poiskNameIn').value).split(' ')
@@ -152,7 +156,6 @@ var namePoisk = function() {
 
             lineApplcant.onclick = function() {
                 window.lineApplcantToSpecNumber = e
-                creatModalWindow()
                 clickToApplicantNumber()
             }
 
@@ -180,7 +183,6 @@ var namePoisk = function() {
 }
 
 var creatSpec = function() {
-    resetFile()
     applicant.innerHTML = ""
     specArray.forEach(function(e, i) {
         var block = document.createElement('div')
@@ -205,7 +207,6 @@ var creatSpec = function() {
 }
 
 var backToSpec = function() {
-    resetFile()
     let backMenu = document.createElement('div')
     backMenu.innerText = "Вернуться в меню"
     backMenu.id = 'backMenu'
@@ -216,7 +217,6 @@ var backToSpec = function() {
 }
 
 var clickToApplicantNumber = function() {
-    resetFile()
     document.getElementById("pause").style.display = "block"   
     document.getElementById('window-menu').style.opacity = 0.2
     let numApp = JSON.parse(readFileSync('./src/data/login.json'));
@@ -228,29 +228,79 @@ var clickToApplicantNumber = function() {
         ipcRenderer.send('formToApplicant')
         document.getElementById("pause").style.display = "none"
         document.getElementById('window-menu').style.opacity = 1
-        creatModalWindow()
+        
     }, 3000)
 }
 
-var creatModalWindow = function(){
-    resetFile()
-    document.getElementById('window-menu').style.opacity = 0.2
-    document.getElementById('modalResetWindow').style.display = "block"
-}
 
-reset.onclick = function(){
-    resetFile()
-    creatSpec()
-    document.getElementById('window-menu').style.opacity = 1
-    document.getElementById('modalResetWindow').style.display = "none"
-}
+
 
 var sortApplicantPoBall = function(){
+    let line = document.createElement('div')
     let top = document.createElement('div')
     let bottom  = document.createElement('div')
 
-    this.top.className = 'sort'
-    this.bottom.className = 'sort'
+    line.id = 'lineSorted'
+    top.className = 'sort'
+    bottom.className = 'sort'
 
+    top.id = "sortTop"
+    bottom.id = "sortbottom"
+
+    top.innerText = "По возрастанию"
+    bottom.innerText = "По убыванию"
+
+    line.appendChild(top)   
+    line.appendChild(bottom)
+    applicants.appendChild(line)
     
+    window.mass = []
+    for (var i = 0; i != specMass.length; i ++){
+        window.mass.push(parseFloat(bazaApplicants[specMass[i]].ball) + "/" + specMass[i])
+    }
+
+    document.getElementById('sortTop').onclick = () =>{
+        window.massSortTop  = mass.sort().reverse()   
+        console.log(massSortTop)
+        functionSorted()
+    }
+    document.getElementById('sortbottom').onclick = () =>{
+        window.massSortTop  = mass.sort()
+        console.log(massSortTop)
+        functionSorted()
+    }
+
+}
+
+var functionSorted = function(){
+    applicant.innerHTML = "" 
+    backToSpec()
+    sortApplicantPoBall()
+    console.log(window.mass)
+    window.massSortTop.forEach(function(e){
+        let numbers = (e.split('/'))[1]
+        
+        let lineApplcantToSpec = document.createElement('div')
+        let spanFioToSpec = document.createElement('span')
+        let yearToSpec = document.createElement('span')
+        let ball = document.createElement('span')
+
+        lineApplcantToSpec.onclick = function() {
+            window.lineApplcantToSpecNumber = numbers
+
+            clickToApplicantNumber()
+        }
+        lineApplcantToSpec.className = 'lineApplcant'
+        lineApplcantToSpec.id =  numbers
+        spanFioToSpec.className = 'spanApplicansPoisk'
+        yearToSpec.className = 'spanApplicansPoisk'
+        ball.className = 'spanApplicansPoisk'
+        spanFioToSpec.innerText = bazaApplicants[numbers].fio
+        yearToSpec.innerText = bazaApplicants[numbers].dataHappi
+        ball.innerText = "ср. балл = " + bazaApplicants[numbers].ball
+        lineApplcantToSpec.appendChild(spanFioToSpec)
+        lineApplcantToSpec.appendChild(yearToSpec)
+        lineApplcantToSpec.appendChild(ball)
+        applicants.appendChild(lineApplcantToSpec)
+    })
 }

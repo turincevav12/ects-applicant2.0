@@ -6,11 +6,11 @@ ipcRenderer.send('applicant');
 
 bazaApplicants = JSON.parse(readFileSync('./src/data/applicant.json'));
 
+
 var add = document.getElementById('add-applicant')
 
 add.onclick = () => {
     let inputs = document.getElementsByClassName('input')
-    console.log(inputs.length)
     let i = 0
 
     for(var j = 0; j!= inputs.length; j++){
@@ -24,14 +24,17 @@ add.onclick = () => {
     if(i == inputs.length){ 
         alert('Начало записи, ожидайте')
         var balls = document.getElementById('ball').value.split(" ")
-        var mass = 0
-        if ( ball.length != 1){
+        var mass = 0.00
+        if ( balls.length != 1){
             balls.forEach(function(e){
-                mass = mass + parseFloat.e;
+                mass = mass + parseFloat(e);
             })
-            balls = mass
+            ball = (mass/balls.length).toFixed(2)
         }else{
-            var ball = parseFloat(balls[0])
+            var ball = parseFloat(balls[0]).toFixed(2)
+        }
+        if (ball == 4.00 || ball == 3.00 || ball == 2.00 || ball == 1.00){
+            ball = parseFloat(ball) + 0.01
         }
 
         bazaApplicants.push({

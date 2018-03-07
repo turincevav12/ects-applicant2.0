@@ -116,6 +116,8 @@ document.getElementById('index').innerText = bazaApplicants[app].index;
 document.getElementById('callsot').innerText = bazaApplicants[app].callsot;
 document.getElementById('callhoum').innerText = bazaApplicants[app].callhoum;
 document.getElementById('spes').innerText = bazaApplicants[app].spec;
+document.getElementById('baza').innerText = bazaApplicants[app].level;
+document.getElementById('mestomoney').innerText = bazaApplicants[app].mestomoney;
 document.getElementById('endshooldata').innerText = bazaApplicants[app].endshooldata;
 document.getElementById('nameshool').innerText = bazaApplicants[app].nameshool;
 document.getElementById('seriyshool').innerText = bazaApplicants[app].seriyshool;
@@ -140,8 +142,15 @@ close.onclick = () => {
 };
 
 print.onclick = () => {
-    __WEBPACK_IMPORTED_MODULE_0_electron__["ipcRenderer"].send('printToForm');
-    alert('PDF сохранен');
+    document.getElementById('navigation').style.display = "none";
+    setTimeout(function () {
+        __WEBPACK_IMPORTED_MODULE_0_electron__["ipcRenderer"].send('printToForm');
+        alert('PDF сохранен');
+
+        setTimeout(function () {
+            document.getElementById('navigation').style.display = "block";
+        }, 1000);
+    }, 2000);
 };
 
 delet.onclick = () => {
@@ -158,45 +167,42 @@ read.onclick = () => {
     document.getElementById('showApplicant').style.display = "none";
     document.getElementById('readApplicant').style.display = "block";
 
-    document.getElementById('fio').value = bazaApplicants[app].fio;
-    document.getElementById('data-happi').value = bazaApplicants[app].dataHappi;
-    document.getElementById('place-of-birth').value = bazaApplicants[app].placeofbirth;
-    document.getElementById('citizenship').value = bazaApplicants[app].citizenship;
-    document.getElementById('document').value = bazaApplicants[app].document;
-    document.getElementById('seria').value = bazaApplicants[app].seria;
-    document.getElementById('number').value = bazaApplicants[app].number;
-    document.getElementById('issued').value = bazaApplicants[app].issued;
-    document.getElementById('regestration-of-passport').value = bazaApplicants[app].regestrationofpassport;
-    document.getElementById('adres-now').value = bazaApplicants[app].adresnow;
-    document.getElementById('index').value = bazaApplicants[app].index;
-    document.getElementById('call-sot').value = bazaApplicants[app].callsot;
-    document.getElementById('call-houm').value = bazaApplicants[app].callhoum;
-    document.getElementById('spec').value = bazaApplicants[app].spec;
-    document.getElementById('end-shool-data').value = bazaApplicants[app].endshooldata;
-    document.getElementById('name-shool').value = bazaApplicants[app].nameshool;
-    document.getElementById('seriy-shool').value = bazaApplicants[app].seriyshool;
-    document.getElementById('number-shool').value = bazaApplicants[app].numbershool;
-    document.getElementById('language').value = bazaApplicants[app].language;
-    document.getElementById('obchaga').value = bazaApplicants[app].obchaga;
+    document.getElementById('fioR').value = bazaApplicants[app].fio;
+    document.getElementById('data-happiR').value = bazaApplicants[app].dataHappi;
+    document.getElementById('place-of-birthR').value = bazaApplicants[app].placeofbirth;
+    document.getElementById('citizenshipR').value = bazaApplicants[app].citizenship;
+    document.getElementById('documentR').value = bazaApplicants[app].document;
+    document.getElementById('seriaR').value = bazaApplicants[app].seria;
+    document.getElementById('numberR').value = bazaApplicants[app].number;
+    document.getElementById('issuedR').value = bazaApplicants[app].issued;
+    document.getElementById('regestration-of-passportR').value = bazaApplicants[app].regestrationofpassport;
+    document.getElementById('adres-nowR').value = bazaApplicants[app].adresnow;
+    document.getElementById('indexR').value = bazaApplicants[app].index;
+    document.getElementById('call-sotR').value = bazaApplicants[app].callsot;
+    document.getElementById('call-houmR').value = bazaApplicants[app].callhoum;
+    document.getElementById('end-shool-dataR').value = bazaApplicants[app].endshooldata;
+    document.getElementById('name-shoolR').value = bazaApplicants[app].nameshool;
+    document.getElementById('seriy-shoolR').value = bazaApplicants[app].seriyshool;
+    document.getElementById('number-shoolR').value = bazaApplicants[app].numbershool;
 
-    document.getElementById('phaser-name').value = bazaApplicants[app].phasername;
-    document.getElementById('phaser-job').value = bazaApplicants[app].phaserjob;
-    document.getElementById('phaser-job-mesto').value = bazaApplicants[app].phaserjobmesto;
-    document.getElementById('phaser-job-phone').value = bazaApplicants[app].phaserjophone;
-    document.getElementById('phaser-mobile').value = bazaApplicants[app].phasermobile;
-    document.getElementById('mother-name').value = bazaApplicants[app].mothername;
-    document.getElementById('mother-job').value = bazaApplicants[app].motherjob;
-    document.getElementById('mother-job-mesto').value = bazaApplicants[app].motherjobmesto;
-    document.getElementById('mother-job-phone').value = bazaApplicants[app].motherjobphone;
-    document.getElementById('mother-mobile').value = bazaApplicants[app].mothermobile;
-    document.getElementById('army').value = bazaApplicants[app].army;
-    document.getElementById('info').value = bazaApplicants[app].info;
+    document.getElementById('specR').innerText = bazaApplicants[app].spec;
+    document.getElementById('languageR').innerText = bazaApplicants[app].language;
+    document.getElementById('obchagaR').innerText = bazaApplicants[app].obchaga;
+    document.getElementById('armyR').innerText = bazaApplicants[app].army;
+    document.getElementById('mesto-moneyR').innerText = bazaApplicants[app].mestomoney;
+    document.getElementById('levelR').innerText = bazaApplicants[app].level;
 
-    spec.forEach(function (e) {
-        var opt = document.createElement('option');
-        opt.innerText = e;
-        document.getElementById('spec').appendChild(opt);
-    });
+    document.getElementById('phaser-nameR').value = bazaApplicants[app].phasername;
+    document.getElementById('phaser-jobR').value = bazaApplicants[app].phaserjob;
+    document.getElementById('phaser-job-mestoR').value = bazaApplicants[app].phaserjobmesto;
+    document.getElementById('phaser-job-phoneR').value = bazaApplicants[app].phaserjophone;
+    document.getElementById('phaser-mobileR').value = bazaApplicants[app].phasermobile;
+    document.getElementById('mother-nameR').value = bazaApplicants[app].mothername;
+    document.getElementById('mother-jobR').value = bazaApplicants[app].motherjob;
+    document.getElementById('mother-job-mestoR').value = bazaApplicants[app].motherjobmesto;
+    document.getElementById('mother-job-phoneR').value = bazaApplicants[app].motherjobphone;
+    document.getElementById('mother-mobileR').value = bazaApplicants[app].mothermobile;
+    document.getElementById('infoR').value = bazaApplicants[app].info;
 };
 
 close1.onclick = () => {
@@ -205,48 +211,127 @@ close1.onclick = () => {
 };
 
 saves.onclick = () => {
+    if (iSpecRR == 1) {
+        var specs = document.getElementById('specRS').value;
+    } else {
+        var specs = document.getElementById('specR').innerText;
+    }
+
+    if (iObchagaRR == 1) {
+        var objas = document.getElementById('obchagaRS').value;
+    } else {
+        var objas = document.getElementById('obchagaR').innerText;
+    }
+
+    if (imestomoneyRR == 1) {
+        var mestos = document.getElementById('mesto-moneyRS').value;
+    } else {
+        var mestos = document.getElementById('mesto-moneyR').innerText;
+    }
+
+    if (ilanguageRR == 1) {
+        var langs = document.getElementById('languageRS').value;
+    } else {
+        var langs = document.getElementById('languageR').innerText;
+    }
+
+    if (iLevelRR == 1) {
+        var levels = document.getElementById('levelRS').value;
+    } else {
+        var levels = document.getElementById('levelR').innerText;
+    }
+
     bazaApplicants.splice(app, 1, {
-        "fio": document.getElementById('fio').value,
-        "dataHappi": document.getElementById('data-happi').value,
-        "placeofbirth": document.getElementById('place-of-birth').value,
-        "citizenship": document.getElementById('citizenship').value,
-        "document": document.getElementById('document').value,
-        "seria": document.getElementById('seria').value,
-        "number": document.getElementById('number').value,
-        "issued": document.getElementById('issued').value,
-        "regestrationofpassport": document.getElementById('regestration-of-passport').value,
-        "adresnow": document.getElementById('adres-now').value,
-        "index": document.getElementById('index').value,
-        "callsot": document.getElementById('call-sot').value,
-        "callhoum": document.getElementById('call-houm').value,
-        "spec": document.getElementById('spec').value,
-        "level": document.getElementById('level').value,
-        "obchaga": document.getElementById('obchaga').value,
-        "mestomoney": document.getElementById('mesto-money').value,
-        "endshooldata": document.getElementById('end-shool-data').value,
-        "nameshool": document.getElementById('name-shool').value,
-        "seriyshool": document.getElementById('seriy-shool').value,
-        "numbershool": document.getElementById('number-shool').value,
-        "language": document.getElementById('language').value,
-        "phasername": document.getElementById('phaser-name').value,
-        "phaserjob": document.getElementById('phaser-job').value,
-        "phaserjobmesto": document.getElementById('phaser-job-mesto').value,
-        "phaserjophone": document.getElementById('phaser-job-phone').value,
-        "phasermobile": document.getElementById('phaser-mobile').value,
-        "mothername": document.getElementById('mother-name').value,
-        "motherjob": document.getElementById('mother-job').value,
-        "motherjobmesto": document.getElementById('mother-job-mesto').value,
-        "motherjobphone": document.getElementById('mother-job-phone').value,
-        "mothermobile": document.getElementById('mother-mobile').value,
-        "army": document.getElementById('army').value,
-        "info": document.getElementById('info').value
+        "fio": document.getElementById('fioR').value,
+        "dataHappi": document.getElementById('data-happiR').value,
+        "placeofbirth": document.getElementById('place-of-birthR').value,
+        "citizenship": document.getElementById('citizenshipR').value,
+        "document": document.getElementById('documentR').value,
+        "seria": document.getElementById('seriaR').value,
+        "number": document.getElementById('numberR').value,
+        "issued": document.getElementById('issuedR').value,
+        "regestrationofpassport": document.getElementById('regestration-of-passportR').value,
+        "adresnow": document.getElementById('adres-nowR').value,
+        "index": document.getElementById('indexR').value,
+        "callsot": document.getElementById('call-sotR').value,
+        "callhoum": document.getElementById('call-houmR').value,
+        "spec": specs,
+        "level": levels,
+        "obchaga": objas,
+        "mestomoney": mestos,
+        "endshooldata": document.getElementById('end-shool-dataR').value,
+        "nameshool": document.getElementById('name-shoolR').value,
+        "seriyshool": document.getElementById('seriy-shoolR').value,
+        "numbershool": document.getElementById('number-shoolR').value,
+        "language": langs,
+        "phasername": document.getElementById('phaser-nameR').value,
+        "phaserjob": document.getElementById('phaser-jobR').value,
+        "phaserjobmesto": document.getElementById('phaser-job-mestoR').value,
+        "phaserjophone": document.getElementById('phaser-job-phoneR').value,
+        "phasermobile": document.getElementById('phaser-mobileR').value,
+        "mothername": document.getElementById('mother-nameR').value,
+        "motherjob": document.getElementById('mother-jobR').value,
+        "motherjobmesto": document.getElementById('mother-job-mestoR').value,
+        "motherjobphone": document.getElementById('mother-job-phoneR').value,
+        "mothermobile": document.getElementById('mother-mobileR').value,
+        "army": document.getElementById('armyR').innerText,
+        "info": document.getElementById('infoR').value,
+        "ball": bazaApplicants[app].ball
     });
 
     Object(__WEBPACK_IMPORTED_MODULE_1_fs__["writeFile"])('./src/data/applicant.json', JSON.stringify(bazaApplicants, null, '\t'), err => {
         if (err) throw err;else {
             alert('Изменено');
+            document.getElementById('readApplicant').style.display = "none";
+            document.getElementById('showApplicant').style.display = "block";
         };
     });
+};
+window.iSpecRR = 0;
+window.iLevelRR = 0;
+window.iObchagaRR = 0;
+window.imestomoneyRR = 0;
+window.ilanguageRR = 0;
+document.getElementById('specRR').onclick = () => {
+    let select = document.getElementById('specRS');
+    document.getElementById('specR').style.display = "none";
+    select.style.display = "block";
+
+    spec.forEach(function (e) {
+        var opt = document.createElement('option');
+        opt.innerText = e;
+        select.appendChild(opt);
+    });
+
+    window.iSpecRR = 1;
+};
+
+document.getElementById('levelRR').onclick = () => {
+    document.getElementById('levelR').style.display = "none";
+    document.getElementById('levelRS').style.display = "block";
+
+    window.iLevelRR = 1;
+};
+
+document.getElementById('obchagaRR').onclick = () => {
+    document.getElementById('obchagaR').style.display = "none";
+    document.getElementById('obchagaRS').style.display = "block";
+
+    window.iObchagaRR = 1;
+};
+
+document.getElementById('mesto-moneyRR').onclick = () => {
+    document.getElementById('mesto-moneyR').style.display = "none";
+    document.getElementById('mesto-moneyRS').style.display = "block";
+
+    window.imestomoneyRR = 1;
+};
+
+document.getElementById('languageRR').onclick = () => {
+    document.getElementById('languageR').style.display = "none";
+    document.getElementById('languageRS').style.display = "block";
+
+    window.ilanguageRR = 1;
 };
 
 /***/ })

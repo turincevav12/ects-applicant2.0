@@ -5,7 +5,7 @@
   "scripts": {
     "run": "electron .",
     "start": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "programm": "./node_modules/.bin/electron-packager . ECTS --version=1.4.10 --app-version=0.1.0 --out=dist --ignore=dist --prune --overwrite "
   },
   "author": "bassik",
   "license": "MIT",
@@ -17,6 +17,8 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "electron": "^1.8.2",
+    "electron-packager": "^11.1.0",
     "shell": "^0.5.0"
   },
   "repository": {

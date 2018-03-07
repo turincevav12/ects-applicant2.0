@@ -5,8 +5,11 @@
 html, body{
     width: 100%;
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     margin: 0;
+}
+#showApplicant{
+    overflow-x:hidden;
 }
 .spanApplicant{
     min-width: 25%;
@@ -26,7 +29,7 @@ html, body{
     border: 1px solid;
 }
 #stock{
-    width: 100%;
+    width: calc(100% - 30mm);
     display: inline-block;
 }
 #regestration{
@@ -46,7 +49,7 @@ html, body{
     width: 100%;
 }
 .sevenLine{
-    width: 120%;
+    width: 100%;
     display: inline-block;
     margin: 5px 0 5px 0;
 }
@@ -57,7 +60,7 @@ html, body{
     flex-grow: 4;
 }
 #kyda{
-    width: 120%;
+    width: 100%;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
@@ -66,7 +69,7 @@ html, body{
     font-size: 14px;
     font-weight: bold;
     text-align: center;
-    width: 120%;
+    width: 100%;
 }
 #rospis{
     border-bottom: 1px solid;
@@ -94,4 +97,35 @@ TD.rightcol{
 
 #readApplicant{
     display: none;
+}
+#specRS{
+    display: none;
+}
+#mesto-moneyRS{
+    display: none;
+}
+#obchagaRS{
+    display: none;
+}
+#levelRS{
+    display: none;
+}
+#languageRS{
+    display: none;  
+}
+
+#navigation{
+    widows: 100%;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 21px;
+}
+.navigations{
+    border: 1px solid;
+    margin-top: 10px;
+    cursor: pointer;
+    
+}
+span{
+    margin: 0 5px 0 0;
 }

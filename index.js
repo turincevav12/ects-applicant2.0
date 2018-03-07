@@ -3,6 +3,7 @@ const path = require('path');
 const webContents = require('electron');
 const fs = require('fs')
 
+
 const app = electron.app;
 const globalShortcut = electron.globalShortcut;
 const BrowserWindow = electron.BrowserWindow;

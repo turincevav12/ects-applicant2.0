@@ -647,12 +647,11 @@ const login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"]
 window.bazaApplicants = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/applicant.json'));
 window.specArray = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/spec.json')).spec;
 
-window.resetFile = function () {
-    const login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json')).login;
+setInterval(function () {
+    window.login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json')).login;
     window.bazaApplicants = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/applicant.json'));
     window.specArray = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/spec.json')).spec;
-};
-
+}, 3000);
 window.onload = () => {
     var enter = document.getElementsByClassName('enter-autorization')[0];
     var name = document.getElementsByClassName('login')[0];
@@ -661,11 +660,15 @@ window.onload = () => {
     enter.onclick = () => {
         for (var i = 0; i != login.length; i++) {
             if (name.value == login[i].login && password.value == login[i].password) {
-                alert('Вы вошли');
+                alert('Добро пожаловать, ' + login[i].name);
                 document.getElementById('user').style.display = "none";
                 document.getElementById('window-menu').style.display = "block";
+
+                window.pass = login[i].pass;
+
+                closeHello();
             } else {
-                alert('Логин или пароль не верны');
+                alert('Логин или пароль не верны, повторите попытку.');
             }
         }
     };
@@ -711,7 +714,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "body{\r\n    margin: 0;\r\n    background: white;\r\n    font-size: 18px;\r\n}\r\n#user{\r\n    width: 500px;\r\n    height: 350px;\r\n    background: lightskyblue;\r\n    margin: 10% auto;\r\n    border-radius: 40px;\r\n    border: 15px solid gainsboro;\r\n    font-family: monospace;\r\n}\r\n.top-line-autorization{\r\n    width: 90%;\r\n    margin: 10px auto;\r\n    height: 40px;\r\n    font-size: 40px;\r\n    color: white;\r\n}\r\n.body-autorization{\r\n    width: 90%;\r\n    height: calc(100% - 160px);\r\n    margin: 10px auto;\r\n    font-size: 28px;\r\n}\r\n.login{\r\n    font-size: 21px;\r\n    width: 100%;\r\n}\r\n.enter-autorization{\r\n    width: 50%;\r\n    height: 15%;\r\n    background: lightblue;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    border: 1px solid cadetblue;\r\n    cursor: pointer;\r\n    font-size: 30px;\r\n    line-height: 50px;\r\n    text-align: center;\r\n}", ""]);
+exports.push([module.i, "body{\n    margin: 0;\n    background: white;\n    font-size: 18px;\n}\n#user{\n    width: 500px;\n    height: 350px;\n    background: lightskyblue;\n    margin: 10% auto;\n    border-radius: 40px;\n    border: 15px solid gainsboro;\n    font-family: monospace;\n}\n.top-line-autorization{\n    width: 90%;\n    margin: 10px auto;\n    height: 40px;\n    font-size: 40px;\n    color: white;\n}\n.body-autorization{\n    width: 90%;\n    height: calc(100% - 160px);\n    margin: 10px auto;\n    font-size: 28px;\n}\n.login{\n    font-size: 21px;\n    width: 100%;\n}\n.enter-autorization{\n    width: 50%;\n    height: 15%;\n    background: lightblue;\n    margin: 0 auto;\n    border-radius: 5px;\n    border: 1px solid cadetblue;\n    cursor: pointer;\n    font-size: 30px;\n    line-height: 50px;\n    text-align: center;\n}", ""]);
 
 // exports
 

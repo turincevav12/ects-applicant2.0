@@ -2,12 +2,14 @@
 	"login": [
 		{
 			"login": "1",
-			"password": "1"
+			"password": "1",
+			"name": "Туринцев Антон",
+			"pass": 1
 		}
 	],
 	"sp": [
 		{
-			"num": 1
+			"num": "3"
 		}
 	]
 }
