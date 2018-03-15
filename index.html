@@ -18,12 +18,6 @@
         </div>
         <div class="enter-autorization">ENTER</div>
     </div>
-    <div id="modalResetWindow" class="modalWindow">
-        <span id="modalResetSpan">Обновите список</span><br>
-        <div id="cog" class="modalResetBlock">
-            <i class="fa fa-spinner" aria-hidden="true"></i>
-        </div>
-    </div>
     <div id="pause" class="modalWindow1">
         <div id="cof" class="modalPauseWIndow">
             <i class="fa fa-spinner fa-4x" aria-hidden="true"></i>
@@ -31,7 +25,7 @@
     </div>
     <div id="modal-password">
         <span>подтверждение</span><br>
-        <input type="text" id="password-modal" value="" />
+        <input type="text" id="password-modal" value="" autofocus/>
         <div id="enter-password-modal">подтвердить</div>
     </div>
     <div id="window-menu">        
@@ -213,10 +207,28 @@
                 <div id="applicants"></div>
             </div>
             <div id="setting" class="menu">
-                <div id="addSpec">
+                <div id="addSpec" class="settingBlock">
                     <span>Введите полное наименование специальности: </span>
                     <input id="nameNewSpec"></input>
                     <div id="addSpecB">Добавить</div>
+                </div>
+
+                <div id="deleteSpec" class="settingBlock">
+                    <span>Выберите нужную специальность для удаления: </span>
+                    <select id="delSpecSelect"></select>
+                    <div id="buttonDelSpec">Удалить</div>
+                </div>
+
+                <div id="addProfil" class="settingBlock">
+                    <span>Введите логин: </span>
+                    <input type="text" id="login"></input><br>
+                    <span>Введите пароль: </span>
+                    <input type="text" id="pass"></input><br>
+                    <span>Введите ФИ: </span>
+                    <input type="text" id="FI"></input><br>
+                    <span>Введите пароль для модераторов: </span>
+                    <input type="text" id="paddModer"></input><br>
+                    <div id="addProf">Добавить</div>
                 </div>
             </div>
         </div>

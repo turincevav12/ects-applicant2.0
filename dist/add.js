@@ -166,6 +166,9 @@ add.onclick = () => {
         Object(__WEBPACK_IMPORTED_MODULE_1_fs__["writeFile"])('./src/data/applicant.json', JSON.stringify(bazaApplicants, null, '\t'), err => {
             if (err) throw err;else {
                 alert('Успешно');
+                for (let i = 0; i != inputs.length; i++) {
+                    inputs[i].value = "";
+                }
             };
         });
     } else {

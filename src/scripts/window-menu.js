@@ -29,6 +29,7 @@ newApplicantB.onclick = () => {
     setting.style.display = 'none'
 
     var select = document.getElementById('spec')
+    select.innerHTML = ""
     specArray.forEach(function(e, i) {
         var opt = document.createElement('option')
         opt.innerText = e
@@ -56,8 +57,12 @@ bazaApplicantsB.onclick = (e) => {
             setting.style.display = 'none'
 
             creatSpec()
+
+            document.getElementById('password-modal').value = ""
         } else {
             alert('У вас нет прав на данный раздел')
+            show.style.display = 'none'
+            document.getElementById('window-menu').style.opacity = 1
         }
     }
 }

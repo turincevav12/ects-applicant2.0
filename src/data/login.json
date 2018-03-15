@@ -5,11 +5,17 @@
 			"password": "1",
 			"name": "Туринцев Антон",
 			"pass": 1
+		},
+		{
+			"login": "2",
+			"password": "2",
+			"name": "test",
+			"pass": "test"
 		}
 	],
 	"sp": [
 		{
-			"num": "3"
+			"num": 3
 		}
 	]
 }

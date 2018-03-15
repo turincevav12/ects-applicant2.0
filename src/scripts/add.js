@@ -78,6 +78,9 @@ add.onclick = () => {
             if (err) throw err;
             else {
                 alert('Успешно')
+                for (let i = 0; i != inputs.length; i++){
+                    inputs[i].value = ""
+                }
             };
         })        
     }else{

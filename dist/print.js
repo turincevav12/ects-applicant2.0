@@ -100,7 +100,7 @@ var print = document.getElementById('print');
 
 let app = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_1_fs__["readFileSync"])('./src/data/login.json')).sp[0].num;
 let bazaApplicants = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_1_fs__["readFileSync"])('./src/data/applicant.json'));
-let spec = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_1_fs__["readFileSync"])('./src/data/spec.json')).spec;
+let spec = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_1_fs__["readFileSync"])('./src/data/spec.json'));
 
 document.getElementById('fio').innerText = bazaApplicants[app].fio;
 document.getElementById('dataHappi').innerText = bazaApplicants[app].dataHappi;

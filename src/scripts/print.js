@@ -11,7 +11,7 @@ var print = document.getElementById('print')
 
 let app = JSON.parse(readFileSync('./src/data/login.json')).sp[0].num;
 let bazaApplicants = JSON.parse(readFileSync('./src/data/applicant.json'));  
-let spec =  JSON.parse(readFileSync('./src/data/spec.json')).spec;
+let spec =  JSON.parse(readFileSync('./src/data/spec.json'));
 
 
 document.getElementById('fio').innerText = bazaApplicants[app].fio

@@ -648,15 +648,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+var newSpec = function () {
+    document.getElementById('delSpecSelect').innerHTML = '';
+    specArray.forEach(function (e, i) {
+        var opt = document.createElement('option');
+        opt.innerText = e;
+        opt.id = i;
+        document.getElementById('delSpecSelect').appendChild(opt);
+    });
+};
+
+newSpec();
+
+document.getElementById('buttonDelSpec').onclick = () => {
+    var select = document.getElementById('delSpecSelect').options.selectedIndex;
+
+    specArray.splice(select, 1);
+    Object(__WEBPACK_IMPORTED_MODULE_2_fs__["writeFile"])('./src/data/spec.json', JSON.stringify(specArray, null, '\t'));
+    newSpec();
+};
+
 document.getElementById('addSpecB').onclick = () => {
     let newSpec = document.getElementById('nameNewSpec').value;
-    specArray.spec.push([newSpec]);
+    specArray.push(newSpec);
 
     Object(__WEBPACK_IMPORTED_MODULE_2_fs__["writeFile"])('./src/data/spec.json', JSON.stringify(specArray, null, '\t'), err => {
         if (err) throw err;else {
             alert('Новая специальность добавлена');
+            document.getElementById('nameNewSpec').value = "";
         };
     });
+};
+
+document.getElementById('addProf').onclick = () => {
+    let name = document.getElementById('login').value;
+    let pass = document.getElementById('pass').value;
+    let FI = document.getElementById('FI').value;
+    let passModer = document.getElementById('paddModer').value;
+
+    var login = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json'));
+
+    login.login.push({
+        "login": name,
+        "password": pass,
+        "name": FI,
+        "pass": passModer
+    });
+    Object(__WEBPACK_IMPORTED_MODULE_2_fs__["writeFile"])('./src/data/login.json', JSON.stringify(login, null, '\t')), err => {
+        if (err) throw err;else {
+            alert('Добавленно');
+            document.getElementById('login').value = '';
+            document.getElementById('pass').value = '';
+            ocument.getElementById('FI').value = '';
+            document.getElementById('paddModer').value = '';
+        }
+    };
 };
 
 /***/ }),
@@ -699,7 +745,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "#addSpec{\r\n    width: 100%;\r\n    height: 60px;\r\n    font-family: monospace;\r\n    font-size: 18px;\r\n}\r\n#nameNewSpec{\r\n    width: 64%;\r\n    font-family: monospace;\r\n    font-size: 18px;\r\n}\r\n#addSpecB{\r\n    width: 100px;\r\n    height: 20px;\r\n    font-family: monospace;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    border: 1px solid;\r\n    background: lightgrey;\r\n    text-align: center;\r\n    margin: 5px auto;\r\n}", ""]);
+exports.push([module.i, "#addSpec{\n    width: 100%;\n    height: 60px;\n    font-family: monospace;\n    font-size: 18px;\n}\n#nameNewSpec{\n    width: 64%;\n    font-family: monospace;\n    font-size: 18px;\n}\n#addSpecB{\n    width: 100px;\n    height: 20px;\n    font-family: monospace;\n    font-size: 18px;\n    cursor: pointer;\n    border: 1px solid;\n    background: lightgrey;\n    text-align: center;\n    margin: 5px auto;\n}\n#buttonDelSpec{\n    border: 1px solid;\n    width: 100px;\n    text-align: center;\n    background: lightgray;\n    margin: 5px auto;\n    cursor: pointer;\n}\n.settingBlock{\n    min-height: 50px;\n    border: 1px solid;\n    margin: 20px 0 20px 0;\n    padding-top: 5px;\n    border-radius: 5px;\n}", ""]);
 
 // exports
 
