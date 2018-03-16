@@ -35,3 +35,17 @@
     padding-top: 5px;
     border-radius: 5px;
 }
+#addProf{
+    width: 100px;
+    height: 25px;
+    border: 1px solid;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+    margin: 10px auto 10px;
+    background: lightgray;
+    border-radius: 5px;
+}
+.inputNewProf{
+    width: 100%;
+}

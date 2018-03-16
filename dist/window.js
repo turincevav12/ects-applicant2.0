@@ -663,6 +663,9 @@ window.closeHello = function () {
 };
 
 newApplicantB.onclick = () => {
+    show.style.display = 'none';
+    document.getElementById('window-menu').style.opacity = 1;
+
     creatApplicant.style.display = 'inline-block';
     bazaApplicant.style.display = 'none';
     setting.style.display = 'none';
@@ -702,15 +705,32 @@ bazaApplicantsB.onclick = e => {
             alert('У вас нет прав на данный раздел');
             show.style.display = 'none';
             document.getElementById('window-menu').style.opacity = 1;
+            document.getElementById('password-modal').value = "";
         }
     };
 };
 
 settingB.onclick = () => {
+    show.style.display = 'block';
+    document.getElementById('window-menu').style.opacity = 0.5;
 
-    creatApplicant.style.display = 'none';
-    bazaApplicant.style.display = 'none';
-    setting.style.display = 'inline-block';
+    accept.onclick = () => {
+        var passwordModal = document.getElementById('password-modal').value;
+        if (passwordModal == pass) {
+            document.getElementById('window-menu').style.opacity = 1;
+            show.style.display = 'none';
+
+            creatApplicant.style.display = 'none';
+            bazaApplicant.style.display = 'none';
+            setting.style.display = 'inline-block';
+            document.getElementById('password-modal').value = "";
+        } else {
+            alert('У вас нет прав на данный раздел');
+            show.style.display = 'none';
+            document.getElementById('window-menu').style.opacity = 1;
+            document.getElementById('password-modal').value = "";
+        }
+    };
 };
 
 window.enterBlockSpec = () => {
@@ -854,6 +874,7 @@ var backToSpec = function () {
 };
 
 var clickToApplicantNumber = function () {
+
     document.getElementById("pause").style.display = "block";
     document.getElementById('window-menu').style.opacity = 0.2;
     let numApp = JSON.parse(Object(__WEBPACK_IMPORTED_MODULE_2_fs__["readFileSync"])('./src/data/login.json'));
